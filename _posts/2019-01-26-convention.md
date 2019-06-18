@@ -59,11 +59,9 @@ if ("red" === color) {
   // "만약 'red'가 color면 처럼" 읽힌다!
 }
 ```
-
-위 코드를 의미적으로 읽어보면 *만약 red 가 color면* 처럼 읽혀져 직관적이지 않습니다.  
   
+위 코드를 의미적으로 읽어보면 *만약 red 가 color면* 처럼 읽혀져 직관적이지 않습니다.  
 EsLint 에서 yoda규칙은 이런 Yoda condition 을 잡아내거나 강요하는 규칙입니다.  
- 
 Yoda Condition에 대한 규칙이 있는 이유는 가독성 때문입니다.  
   
 일반적으로 위와 같은 표현(Yoda condition) 보다는
@@ -107,15 +105,16 @@ no-magic-numbers 규칙은 매직넘버(magic number)를 사용하지 못하도�
 > '매직넘버' 라는 용어는 숫자뿐만 아니라 의미가 불분명한 모든 토큰을 가리킵니다.  
 > [매직넘버? 왜 나빠](https://stackoverflow.com/questions/47882/what-is-a-magic-number-and-why-is-it-bad)
   
-이 규칙은 아무런 option을 주지 않을 경우 이런 경우까지 linter가 잡아냅니다.
+이 규칙은 아무런 option을 주지 않을 경우 이런 경우까지 linter가 잡아냅니다.  
+
 ```javascript
 // 배열 길이 0 인지
-if (someArray.length === 0) {} 
+if (someArray.length === 0) {}
 
-// 원의 둘래
-const circleCircumference = radius * Math.PI * 2; 
+// 원의 둘레
+const circleCircumference = radius * Math.PI * 2;  
 ```
-그럼 이렇게 해버려야 하나? 
+그럼 이렇게 해버려야 하나?  
 ```javascript
 const ZERO = 0;
 const TWO = 2;
@@ -126,9 +125,9 @@ const circleCircumference = radius * Math.PI * TWO;
 이런 방식은 Linter는 통과하지만  
 매직넘버를 쓰지 말자는 의도에도 부합하지 않고,,, 의미가 없다고 생각합니다
 
-ignores 옵션으로 특정 숫자들은 사용할 수 있게 하는 설정이 가능합니다. 
-하지만 어떤 기준으로 어떤 숫자를 허용할 건지에 대한 의문이 생깁니다. 
-그래서 매직넘버의 예외로 둘 수 있는 기준이 있나? 생각이 들어 찾아보았습니다만,,, 
+ignores 옵션으로 특정 숫자들은 사용할 수 있게 하는 설정이 가능합니다.  
+하지만 어떤 기준으로 어떤 숫자를 허용할 건지에 대한 의문이 생깁니다.  
+그래서 매직넘버의 예외로 둘 수 있는 기준이 있나? 생각이 들어 찾아보았습니다만,,,  
 기준에 대한 명확한 자료를 찾지는 못했습니다.
 
 stackoverflow 나 github의 몇몇 글을 찾아보니 간혹 이 규칙을 적용한 경우에는  
