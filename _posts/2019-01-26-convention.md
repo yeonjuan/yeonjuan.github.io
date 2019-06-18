@@ -96,8 +96,8 @@ if ('red' = color) {
 ## 3. no-magic-numbers
 [ESLint: no-magic-numbers](https://eslint.org/docs/rules/no-magic-numbers)  
 no-magic-numbers 규칙은 매직넘버(magic number)를 사용하지 못하도록 하는 규칙입니다.  
-이 내용은 클린 코드라는 책의 냄새와 휴리스틱 부분에도 나오는 내용으로 소프트웨어 개발에서  
-오래된 규칙이라고 합니다.  
+이 내용은 **클린 코드라는 책의 냄새와 휴리스틱** 부분에도 나오는 내용으로 소프트웨어 개발에서  
+**오래된 규칙**이라고 합니다.  
 또한 코드 리뷰를 받을 때 제 코드에서 종종 나온 내용이기도 합니다:)
   
 > ESLinter 에서는 숫자만 매직넘버로 거르지만  
