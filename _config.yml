@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "Yeon Joah"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/profile.jpeg"
   bio              : "개발자"
   location         : "성남"
   email            :
