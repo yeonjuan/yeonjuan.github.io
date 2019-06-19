@@ -12,12 +12,13 @@
 ESLint 규칙을 찾아보면서 몰랐던 내용이나, 흥미로운 내용을 따로 정리해 보았습니다.  
 
  - **1. no-octal**  
- - **1. yoda**  
- - **1. no-magic-numbers**  
+ - **2. yoda**  
+ - **3. no-magic-numbers**  
 
 
 ## 1. no-octal
 [ESLint: no-octal](https://eslint.org/docs/rules/no-octal)  
+
 이 규칙은 8진수를 나타낼 때 0을 앞에 쓴 표현(**"0"-prefixed octal literals**)을 쓰지 말자는 규칙입니다.  
 
 ES3에서는 다음과 같이 8진수를 8진수 숫자 앞에 0을 붙여서 나타낼 수 있었습니다.  
@@ -43,6 +44,7 @@ console.log(091); // 91
 
 ## 2. yoda
 [ESLint: yoda](https://eslint.org/docs/rules/yoda)  
+
 yoda? 요다?  
 이름이 좀 이상한것 같아 찾아보니 찾아보니 **스타워즈**의 요다 였습니다.  
 **요다**가 말하는 방식 (yodish)에서 이름을 따온 룰 이라고 합니다.  
@@ -98,6 +100,7 @@ if ('red' = color) {
 
 ## 3. no-magic-numbers
 [ESLint: no-magic-numbers](https://eslint.org/docs/rules/no-magic-numbers)  
+
 no-magic-numbers 규칙은 매직넘버(magic number)를 사용하지 못하도록 하는 규칙입니다.  
 이 내용은 **클린 코드라는 책의 냄새와 휴리스틱** 부분에도 나오는 내용으로 소프트웨어 개발에서  
 **오래된 규칙**이라고 합니다.  
