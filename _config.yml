@@ -1,6 +1,6 @@
 
 minimal_mistakes_skin    : "default"
-
+google_analytics_id: UA-142469969-1
 # Site Settings
 locale                   : "ko"
 title                    : "연 블로그"
