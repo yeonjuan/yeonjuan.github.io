@@ -68,8 +68,7 @@ Object.prototype.hasOwnProperty.call(obj, 'name'); // true
 ## 2. no-return-await
 [ESLint: no-return-await](https://eslint.org/docs/rules/no-return-await)  
 
-이 규칙은 `async function` 내부에서 `return await`을 하지 않도록 하는 규칙입니다.  
-예를 들어 다음과 같은 경우 입니다.  
+이 규칙은 `async function` 내부에서 `return await`을 하지 않도록 하는 규칙입니다. 예를 들어 다음과 같은 경우 입니다.  
 
 ```js
 async function getSomePromise() {
@@ -106,8 +105,9 @@ const value = await asynCall();
 // ...
 ```
 위 코드를 보면 (1), (3) 이 중복되는 과정이라는 것을 알 수 있습니다.  
-async 함수 내부에서 await으로 기다린 promise가 fulfill 되기를 기다린 후  
-그 값을 다시 promise로 감싸서 반환하고 asynCall()을 사용하는 어디선가 await으로 promise가 fulfill 되기를 기다리게 됩니다.  
+(1). `async` 함수 내부에서 `await`으로 기다린 `promise`가 `fulfill` 되기를 기다린 후  
+(2). `fulfill`된 값을 다시 `promise`로 감싸서 반환하고,  
+(3). `asynCall()`을 사용하는 어디선가 `await`으로 `promise`가 `fulfill` 되기를 기다리게 됩니다.  
 비록 성능상에 큰 차이가 발생하지는 않지만 불필요한 작업이기 때문에 ESLint에서 걸러낼수 있는 규칙으로 제공하고 있습니다.  
 
 하지만 이 규칙에서도 `return await`을 허용하는 경우가 있습니다.  
@@ -127,9 +127,9 @@ async function asyncCall() {
 ```
 
 바로 위와 같이 `try catch`로 `return await`을 감쌀 때입니다.  
-await 뒤에 온 promise가 reject될 경우 에러를 throw 합니다.  
-return await에서 다루는 promise에 대한 에러 처리를 async 함수에서 처리할 수 있습니다.  
-때문에 no-return-await 규칙을 사용하더라도 try catch로 감싼 경우는 통과하게 됩니다.  
+`await` 뒤에 온 `promise`가 `reject`될 경우 `Error`를 `throw` 합니다.  
+`return await`에서 다루는 `promise`에 대한 `Error` 처리를 `async` 함수에서 처리할 수 있습니다.  
+때문에 `no-return-await` 규칙을 사용하더라도 `try catch`로 감싼 경우는 통과하게 됩니다.  
 
 ## 3. comma-dangle
 [ESLint: comma-dangle](https://eslint.org/docs/rules/comma-dangle)  
@@ -166,8 +166,8 @@ function func(a, b, ) {}
     > 한 줄만 수정하게 된다.
 
 위와 같이 형상관리 툴 (의 diff 기능) 이용시,
-trailing-comma를 사용하지 않는다면 콤마가 추가된 라인까지 수정으로 표시됩니다.  
-trailing-comma를 사용하는 경우에는 추가, 삭제가 된 라인만 표시되게 되어 더 깔끔한 비교 결과를 확인할 수 있습니다.  
+`trailing-comma`를 사용하지 않는다면 콤마가 추가된 라인까지 수정으로 표시됩니다.  
+`trailing-comma`를 사용하는 경우에는 추가, 삭제가 된 라인만 표시되게 되어 더 깔끔한 비교 결과를 확인할 수 있습니다.  
 
 
 > 참고  
