@@ -23,7 +23,7 @@ const obj = {
 //  객체에서 직접 호출
 obj.hasOwnProperty('name'); // true
 
-// Object.prototype 을 이용해 호출
+// Object.prototype을 이용해 호출
 Object.prototype.hasOwnProperty.call(obj, 'name'); // true
 ```
   
@@ -38,8 +38,8 @@ Object.prototype.hasOwnProperty.call(obj, 'name'); // true
       const obj = Object.create(null);
       obj.name = 'joah';
 
-      obj.hasOwnProperty('name'); //  Uncaught TypeError
-      Object.prototype.hasOwnProperty.call(obj, 'name'); // jaoh
+      obj.hasOwnProperty('name'); // Uncaught TypeError
+      Object.prototype.hasOwnProperty.call(obj, 'name'); // true
       ```
 
       따라서 위와 같이 Object.create(null)로 만든 객체에서 builtin 메서드를 직접 호출하게 된다면 에러를 발생시킵니다.  
@@ -56,12 +56,14 @@ Object.prototype.hasOwnProperty.call(obj, 'name'); // true
 
       // ...
 
-      badJSON.hasOwnProperty('name');// Uncaught TypeError
-      Object.prototype.hasOwnProperty.call(badJSON, 'name'); // jaoh
+      badJSON.hasOwnProperty('name'); // Uncaught TypeError
+      Object.prototype.hasOwnProperty.call(badJSON, 'name'); // true
       ```
 
-      예를 들어 위와 같이 악의적인 클라이언트가 builtin메서드를 감춘 형태의 JSON을 보내는 경우,  
-      객체에서 직접 메서드를 사용해 처리한다면 에러를 발생시킬 수 있습니다.  
+      예를 들어 위와 같이 악의적인 클라이언트가 builtin 메서드를 감춘 형태의 JSON을 보내는 경우, 객체에서 직접 메서드를 사용해 처리한다면 에러를 발생시킬 수 있습니다.  
+  
+  이런 이유로 no-prototype-builtins 규칙은 builtin 메서드 사용시 `Object.prototype`을 활용하도록 정합니다.  
+
 
 ## 2. no-return-await
 [ESLint: no-return-await](https://eslint.org/docs/rules/no-return-await)  
