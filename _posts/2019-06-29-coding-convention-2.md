@@ -13,17 +13,18 @@
 
 Object.prototype의 builtin 메서드는 `hasOwnProperty`, `isPrototypeOf` 등이 있습니다.  
 
-이 메서드를 호출하는 방법은 다음과 같이 **직접 호출**하는 방법과 **Object.prototype**을 이용하여 호출하는 방법이 있습니다.  
+이 메서드를 호출하는 방법은 다음과 같이 **객체에서 직접 호출**하는 방법과 **Object.prototype을 이용하여 호출**하는 방법이 있습니다.  
+
 ```js
 const obj = {
   name: 'joah',
 }
 
 //  객체에서 직접 호출
-obj.hasOwnProperty(name) // true
+obj.hasOwnProperty('name'); // true
 
 // Object.prototype 을 이용해 호출
-Object.prototype.hasOwnProperty(obj, 'name'); // true
+Object.prototype.hasOwnProperty.call(obj, 'name'); // true
 ```
 
 **no-prototype-builtins** 규칙을 통해 객체에서 builtin 메서드를 직접 호출하지 않도록 하는 이유는 다음과 같습니다.  
@@ -90,10 +91,10 @@ async function asyncCall() {
 
   // (1) promise가 fulfill 되기를 기다렸다가, 값을 반환함
   return await getSomePromise();
-  // (2) async로 선언되었기 때문에 promise 가 반환됨
+  // (2) async로 선언되었기 때문에 promise가 반환됨
 }
 
-/* 어디선가 asyncCall() 을 호출할 때, */.
+/* 어디선가 asyncCall()을 호출할 때, */.
 // ...
 
 // (3) promise가 fulfill 되기를 기다렸다가, 값을 반환함
@@ -101,7 +102,7 @@ const value = await asynCall();
 
 // ...
 ```
-위 코드를 보면 (1), (3)이 중복되는 과정이라는 것을 알 수 있습니다.  
+위 코드를 보면 (1), (3) 이 중복되는 과정이라는 것을 알 수 있습니다.  
 async 함수 내부에서 await으로 기다린 promise가 fulfill되기를 기다린 후  
 그 값을 다시 promise로 감싸서 반환하고 asynCall() 을 사용하는 어디선가 await으로 promise가 fulfill되기를 기다리게 됩니다.  
 비록 성능상에 큰 차이가 발생하지는 않지만 불필요한 작업이기 때문에 ESLint에서 걸러낼수 있는 규칙으로 제공하고 있습니다.  
@@ -122,7 +123,7 @@ async function asyncCall() {
 }
 ```
 
-바로 위와 같이 try catch로 return await을 감쌀 때입니다.  
+바로 위와 같이 **try catch로 return await을 감쌀 때**입니다.  
 await 뒤에 온 promise가 reject될 경우 에러를 throw 합니다.  
 return await에서 다루는 promise에 대한 에러 처리를 async 함수에서 처리할 수 있습니다.  
 때문에 no-return-await 규칙을 사용하더라도 try catch로 감싼 경우는 통과하게 됩니다.  
@@ -131,9 +132,9 @@ return await에서 다루는 promise에 대한 에러 처리를 async 함수에�
 [ESLint: comma-dangle](https://eslint.org/docs/rules/comma-dangle)  
 
 이 규칙은 **trailing-comma**를 사용하도록 설정할 수 있는 규칙입니다.  
-**trailing-comma**는 object나 array의 값, function의 매개변수 등을 나타낼 때 마지막에 콤마(,)를 하나 더 추가하는 규칙입니다.  
+**trailing-comma**는 object나 array의 값, function의 매개변수 등을 나타낼 때 **마지막에 콤마(,)를 하나 더 추가**하는 규칙입니다.  
 
-예를 들어 다음과 같이 마지막 프로퍼티의 값 뒤에 콤마(,)를 하나 더 추가하도록 합니다.
+예를 들어 다음과 같이 마지막 프로퍼티나 매개변수 뒤에 콤마(,)를 하나 더 추가하도록 합니다.
 ```js
 const obj = {
   foo: 'foo',
@@ -157,7 +158,7 @@ function func(a, b, ) {}
     ![trailing-comma](/assets/images/trailing-comma.png)
     > 한 줄만 수정하게 된다.
 
-위와 같이 형상관리 툴 (diff 기능) 이용시  
+위와 같이 형상관리 툴 (의 diff 기능) 이용시  
 trailing-comma를 사용하지 않는다면 콤마가 추가된 라인까지 수정으로 표시됩니다.  
 trailing-comma를 사용하는 경우에는 추가, 삭제가 된 라인만 표시되게 되어  
 더 깔끔한 비교 결과를 확인할 수 있습니다.  
