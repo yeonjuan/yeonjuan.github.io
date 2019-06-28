@@ -9,11 +9,11 @@
 ## 1. no-prototype-builtins
 [ESLint: no-prototype-builtins](https://eslint.org/docs/rules/no-prototype-builtins)  
 
-이 규칙은 Object.prototype의 **builtin으로 제공되는 메서드**를 **객체에서 직접 호출하지 않도록** 하는 규칙입니다.  
+이 규칙은 Object.prototype의 builtin으로 제공되는 메서드를 객체에서 직접 호출하지 않도록 하는 규칙입니다.  
 
 Object.prototype의 builtin 메서드는 `hasOwnProperty`, `isPrototypeOf` 등이 있습니다.  
 
-이 메서드를 호출하는 방법은 다음과 같이 **객체에서 직접 호출**하는 방법과 **Object.prototype을 이용하여 호출**하는 방법이 있습니다.  
+이 메서드를 호출하는 방법은 다음과 같이 `객체에서 직접 호출`하는 방법과 `Object.prototype을 이용하여 호출`하는 방법이 있습니다.  
 
 ```js
 const obj = {
@@ -27,7 +27,7 @@ obj.hasOwnProperty('name'); // true
 Object.prototype.hasOwnProperty.call(obj, 'name'); // true
 ```
   
-**no-prototype-builtins** 규칙을 통해 객체에서 builtin 메서드를 직접 호출하지 않도록 하는 이유는 다음과 같습니다.  
+`no-prototype-builtins` 규칙을 통해 객체에서 builtin 메서드를 직접 호출하지 않도록 하는 이유는 다음과 같습니다.  
   
 
   1. **Object.create(null)**  
@@ -42,7 +42,7 @@ Object.prototype.hasOwnProperty.call(obj, 'name'); // true
       Object.prototype.hasOwnProperty.call(obj, 'name'); // true
       ```
 
-      따라서 위와 같이 Object.create(null)로 만든 객체에서 builtin 메서드를 직접 호출하게 된다면 에러를 발생시킵니다.  
+      따라서 위와 같이 `Object.create(null)`로 만든 객체에서 builtin 메서드를 직접 호출하게 된다면 에러를 발생시킵니다.  
 
   2. **속성이 builtin 메서드를 감추는 경우**  
 
@@ -68,7 +68,7 @@ Object.prototype.hasOwnProperty.call(obj, 'name'); // true
 ## 2. no-return-await
 [ESLint: no-return-await](https://eslint.org/docs/rules/no-return-await)  
 
-이 규칙은 **async function 내부에서 return await을 하지 않도록** 하는 규칙입니다.  
+이 규칙은 `async function` 내부에서 `return await`을 하지 않도록 하는 규칙입니다.  
 예를 들어 다음과 같은 경우 입니다.  
 
 ```js
@@ -82,7 +82,7 @@ async function asyncCall() {
 }
 ```
   
-이 규칙에서 return await을 잡아내는 이유는 async 키워드를 붙힌 function은 promise를 반환하기 때문입니다.  
+이 규칙에서 `return await`을 잡아내는 이유는 async 키워드를 붙힌 function은 promise를 반환하기 때문입니다.  
 
 ```js
 async function getSomePromise() {
@@ -110,7 +110,7 @@ async 함수 내부에서 await으로 기다린 promise가 fulfill 되기를 기
 그 값을 다시 promise로 감싸서 반환하고 asynCall()을 사용하는 어디선가 await으로 promise가 fulfill 되기를 기다리게 됩니다.  
 비록 성능상에 큰 차이가 발생하지는 않지만 불필요한 작업이기 때문에 ESLint에서 걸러낼수 있는 규칙으로 제공하고 있습니다.  
 
-하지만 이 규칙에서도 return await을 허용하는 경우가 있습니다.  
+하지만 이 규칙에서도 `return await`을 허용하는 경우가 있습니다.  
 
 ```js
 async function getSomePromise() {
@@ -126,7 +126,7 @@ async function asyncCall() {
 }
 ```
 
-바로 위와 같이 **try catch로 return await을 감쌀 때**입니다.  
+바로 위와 같이 `try catch`로 `return await`을 감쌀 때입니다.  
 await 뒤에 온 promise가 reject될 경우 에러를 throw 합니다.  
 return await에서 다루는 promise에 대한 에러 처리를 async 함수에서 처리할 수 있습니다.  
 때문에 no-return-await 규칙을 사용하더라도 try catch로 감싼 경우는 통과하게 됩니다.  
@@ -134,8 +134,8 @@ return await에서 다루는 promise에 대한 에러 처리를 async 함수에�
 ## 3. comma-dangle
 [ESLint: comma-dangle](https://eslint.org/docs/rules/comma-dangle)  
 
-이 규칙은 **trailing-comma**를 사용하도록 설정할 수 있는 규칙입니다.  
-**trailing-comma**는 object나 array의 값, function의 매개변수 등을 나타낼 때 **마지막에 콤마(,)를 하나 더 추가**하는 규칙입니다.  
+이 규칙은 `trailing-comma`를 사용하도록 설정할 수 있는 규칙입니다.  
+`trailing-comma`는 object나 array의 값, function의 매개변수 등을 나타낼 때 마지막에 콤마(,)를 하나 더 추가하는 규칙입니다.  
 
 예를 들어 다음과 같이 마지막 프로퍼티나 매개변수 뒤에 콤마(,)를 하나 더 추가하는 것을 말합니다.
 ```js
@@ -149,7 +149,7 @@ function func(a, b, ) {}
 ```
 
 처음에 규칙을 사용하기만 할 때는 단순한 스타일을 일치시키기 위한 용도인 줄만 알았습니다.  
-하지만 **trailing-comma**를 사용함으로써 얻는 장점이 있습니다.  
+하지만 `trailing-comma`를 사용함으로써 얻는 장점이 있습니다.  
 여러 줄로 이루어진 값을 수정할 때, 삭제/추가해야 할 줄만 수정할 수 있다는 점 입니다.  
 이 장점 덕분에 형상관리 툴에서 수정사항을 비교하기 쉽습니다.  
 
