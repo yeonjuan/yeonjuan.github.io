@@ -13,7 +13,10 @@
 
 Object.prototype의 builtin 메서드는 `hasOwnProperty`, `isPrototypeOf` 등이 있습니다.  
 
-이 메서드를 호출하는 방법은 다음과 같이 (1). 객체에서 직접 호출하는 방법과 (2). Object.prototype을 이용하여 호출하는 방법이 있습니다.  
+이 메서드를 호출하는 방법은 다음과 같은 방법이 있습니다.  
+
+* 객체에서 직접 호출하는 방법  
+* Object.prototype을 이용하여 호출하는 방법  
 
 ```js
 const obj = {
@@ -43,7 +46,7 @@ no-prototype-builtins 규칙을 통해 객체에서 builtin 메서드를 직접 
       Object.prototype.hasOwnProperty.call(obj, 'name'); // true
       ```
 
-      따라서 위와 같이 `Object.create(null)`로 만든 객체에서 builtin 메서드를 직접 호출하게 된다면 에러를 발생시킵니다.  
+      따라서 위와 같이 Object.create(null)로 만든 객체에서 builtin 메서드를 직접 호출하게 된다면 에러를 발생시킵니다.  
 
   2. **속성이 builtin 메서드를 감추는 경우**  
 
@@ -168,8 +171,8 @@ function func(a, b, ) {}
     > 한 줄만 수정하게 된다.
 
 위와 같이 형상관리 툴 (의 diff 기능) 이용시,
-`trailing-comma`를 사용하지 않는다면 콤마가 추가된 라인까지 수정으로 표시됩니다.  
-`trailing-comma`를 사용하는 경우에는 추가, 삭제가 된 라인만 표시되게 되어 더 깔끔한 비교 결과를 확인할 수 있습니다.  
+trailing-comma를 사용하지 않는다면 콤마가 추가된 라인까지 수정으로 표시됩니다.  
+trailing-comma를 사용시 추가, 삭제가 된 라인만 표시되게 되어 더 깔끔한 비교 결과를 확인할 수 있습니다.  
 
 
 > 참고  
