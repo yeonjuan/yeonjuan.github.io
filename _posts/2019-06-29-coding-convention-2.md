@@ -15,18 +15,18 @@ Object.prototype의 builtin 메서드는 `hasOwnProperty`, `isPrototypeOf` 등�
 
 이 메서드를 호출하는 방법은 다음과 같은 방법이 있습니다.  
 
-* 객체에서 직접 호출하는 방법  
-* Object.prototype을 이용하여 호출하는 방법  
+* (1) 객체에서 직접 호출하는 방법  
+* (2) Object.prototype을 이용하여 호출하는 방법  
 
 ```js
 const obj = {
   name: 'joah',
 }
 
-//  객체에서 직접 호출
+//  (1) 객체에서 직접 호출
 obj.hasOwnProperty('name'); // true
 
-// Object.prototype을 이용해 호출
+// (2) Object.prototype을 이용해 호출
 Object.prototype.hasOwnProperty.call(obj, 'name'); // true
 ```
   
@@ -109,9 +109,9 @@ const value = await asynCall();
 // ...
 ```
 위 코드를 보면 (1), (3)이 중복되는 과정이라는 것을 알 수 있습니다.  
-(1). async function 내부에서 await으로 promise가 fulfill 되기를 기다린 후  
-(2). fulfill된 값을 다시 promise로 감싸서 반환하고,  
-(3). asynCall()을 사용하는 곳에서 await으로 promise가 fulfill 되기를 기다리게 됩니다.  
+  * (1). async function 내부에서 await으로 promise가 fulfill 되기를 기다린 후  
+  * (2). fulfill된 값을 다시 promise로 감싸서 반환하고,  
+  * (3). asynCall()을 사용하는 곳에서 await으로 promise가 fulfill 되기를 기다리게 됩니다.  
 
 비록 성능상에 큰 차이가 발생하지는 않지만 불필요한 작업이기 때문에 ESLint에서 걸러낼수 있는 규칙으로 제공하고 있습니다.  
 
