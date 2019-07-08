@@ -46,4 +46,5 @@
   앞으로 코드를 짤 때 책에서 배운 내용을 활용해서 좀 더 고민해서 개발해봐야겠습니다.
 
 ### 같이 보면 좋은 것
- * [clean-code-javascript](https://github.com/qkraudghgh/clean-code-javascript-ko) - JS 에만 관련된 내용이 조금더 추가되어있다.
+ * [clean-code-javascript](https://github.com/qkraudghgh/clean-code-javascript-ko)
+    - JS에 관련된 내용이 조금 더 추가되어있다.
