@@ -1,0 +1,7 @@
+:root {
+  --black-900: #1D1D1D;
+}
+
+main h1 {
+  color: var(--black-900)
+}
