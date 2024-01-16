@@ -7,6 +7,7 @@ export type Contributions = {
   owner: string;
   repo: string;
   contributionsTotal: number;
+  color: string;
   contributions: [
     {
       pr: string;

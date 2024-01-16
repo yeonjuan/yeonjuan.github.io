@@ -49,15 +49,20 @@ async function loadContributions(octokit, projects) {
     "contributions.json"
   );
   const allContributions = await Promise.all(
-    projects.map(async ({ owner, repo }) => {
+    projects.map(async ({ owner, repo, color }) => {
       const contributions = await fetchContributions(octokit, { owner, repo });
       return {
         owner,
         repo,
+        color,
         contributionsTotal: contributions.length,
         contributions,
       };
     })
+  );
+  allContributions.sort(
+    (contributionA, contributionB) =>
+      contributionB.contributionsTotal - contributionA.contributionsTotal
   );
   await utils.writeJSON(allContributions, CONTRIBUTIONS_FILE_PATH);
 }
@@ -70,25 +75,26 @@ loadContributions(octokit, [
   {
     owner: "typescript-eslint",
     repo: "typescript-eslint",
+    color: "#2656c7",
   },
   {
     owner: "eslint",
     repo: "eslint",
+    color: "#4B32C3",
   },
   {
     owner: "babel",
     repo: "babel",
+    color: "#eeda7c",
   },
   {
     owner: "facebook",
     repo: "react",
+    color: "rgb(8, 126, 164)",
   },
   {
     owner: "GoogleChrome",
     repo: "lighthouse",
-  },
-  {
-    owner: "rome",
-    repo: "tools",
+    color: "#DD5144",
   },
 ]);
