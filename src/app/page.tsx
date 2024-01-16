@@ -42,11 +42,7 @@ export default async function Home() {
           </ul>
         </div>
         <div className="py-2 my-2">
-          <h2 className="text-xl pb-2">Open Source Contributions</h2>
-          <ContributionsChart items={ALL_CONTRIBUTIONS} />
-        </div>
-        <div className="py-2 my-2">
-          <h2 className="text-xl pb-2">ETC</h2>
+          <h2 className="text-xl pb-2">Education</h2>
           <ul>
             <li>
               <span className="text-sm">Hanyang University</span>
@@ -54,7 +50,19 @@ export default async function Home() {
           </ul>
         </div>
         <div className="py-2 my-2">
-          <h2 className="text-xl pb-2">Education</h2>
+          <h2 className="text-xl pb-2">Open Source Contributions</h2>
+          <ContributionsChart items={ALL_CONTRIBUTIONS} />
+        </div>
+        <div className="py-2 my-2">
+          <h2 className="text-xl pb-2">Open Source Projects</h2>
+          <ul>
+            <li>
+              <span className="text-sm">Hanyang University</span>
+            </li>
+          </ul>
+        </div>
+        <div className="py-2 my-2">
+          <h2 className="text-xl pb-2">Activities</h2>
           <ul>
             <li>
               <span className="text-sm">Hanyang University</span>
