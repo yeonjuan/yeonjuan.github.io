@@ -28,7 +28,6 @@ async function fetchContributions(octokit, { owner, repo }) {
     q: `type:pr+repo:${owner}/${repo}+author:yeonjuan+is:merged`,
     per_page: 100,
   });
-
   const contributions = data.items.map((item) => {
     return {
       pr: item.html_url,
@@ -37,6 +36,18 @@ async function fetchContributions(octokit, { owner, repo }) {
     };
   });
   return contributions;
+}
+
+/**
+ * @param {Octokit} octokit
+ * @param {{owner: string, repo: string}} project
+ * @returns {Promise<{ avatar: string }>}
+ */
+async function fetchProjectInfo(octokit, { owner, repo }) {
+  const { data } = await octokit.rest.repos.get({ owner, repo });
+  return {
+    avatar: data.owner.avatar_url,
+  };
 }
 
 /**
@@ -50,7 +61,14 @@ async function loadContributions(octokit, projects) {
   );
   const allContributions = await Promise.all(
     projects.map(async ({ owner, repo, color }) => {
-      const contributions = await fetchContributions(octokit, { owner, repo });
+      const [contributions, projectInfo] = await Promise.all([
+        fetchContributions(octokit, { owner, repo }),
+        fetchProjectInfo(octokit, { owner, repo }),
+      ]);
+      await utils.downloadImage(
+        projectInfo.avatar,
+        path.resolve(PUBLIC_DIRECTORY_PATH, repo)
+      );
       return {
         owner,
         repo,
