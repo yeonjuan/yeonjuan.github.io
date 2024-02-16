@@ -18,17 +18,22 @@ import ITEMS from "../../data/contributions.json";
   </div>
   <div class="mb-5">
     <p>
-      프론트엔드 개발자입니다. 주로 TypeScript, React로 프론트엔드를 개발합니다.<br
-      />
-      JavaScript 개발 툴 관련 오픈소스에 관심이 많습니다.
+      안녕하세요! 저는 프론트엔드 개발자로 일하고 있습니다. 주로
+      <code>TypeScript</code>,<code>React</code>로 프론트엔드를 개발하며 <code
+        >Node.Js</code
+      >, <code>NestJS</code>
+      를 사용해 백엔드 개발을 하기도 합니다. <code>AST</code>를 활용한
+      <code>오픈소스</code>에 관심이 많아 종종 기여하고 있습니다.
     </p>
   </div>
   <div>
-    <h2 class="text-2xl pb-4 border-b mb-4">Work experience</h2>
+    <h2 class="text-2xl pb-4 border-b mb-4">경력</h2>
     <ul class="mb-7">
       <li>
         <div class="mb-2">
-          <strong>LINE+</strong><span class="italic mx-2">- 2021.09 ~ now</span>
+          <strong>LINE+</strong><span class="italic mx-2"
+            >UIT | 2021.09 ~ now</span
+          >
         </div>
         <ul class="unset">
           <li class="pl-2">- NFT 플랫폼 웹앱 빌더 서비스 프론트 개발</li>
@@ -40,7 +45,7 @@ import ITEMS from "../../data/contributions.json";
       <li>
         <div class="mb-2">
           <strong>Kakao</strong>
-          <span class="italicm mx-2">- 2019.01 ~ 2021.09</span>
+          <span class="italicm mx-2">FE 플랫폼 팀 | 2019.01 ~ 2021.09</span>
         </div>
         <ul class="unset">
           <li class="pl-2">- 사내 코딩 스타일 가이드 제작</li>
@@ -65,7 +70,7 @@ import ITEMS from "../../data/contributions.json";
       <li>
         <div class="mb-2">
           <strong>KT</strong>
-          <span class="italic mx-2">2018.07 ~ 2018.08</span>
+          <span class="italic mx-2">소프트웨어 개발단 | 2018.07 ~ 2018.08</span>
         </div>
         <ul class="unset">
           <li class="pl-2">- 웹 지도 서비스 프론트 과제. (인턴)</li>
@@ -83,19 +88,24 @@ import ITEMS from "../../data/contributions.json";
     </ul>
   </div>
   <div class="mb-7">
-    <h2 class="text-2xl pb-4 border-b mb-4">Open Source Contributions</h2>
+    <h2 class="text-2xl pb-4 border-b mb-4">오픈소스 컨트리뷰션</h2>
     <p>
-      개인 시간에는 관심 있는 오픈소스에 기여하곤 합니다. 주로 AST를 활용한 툴에
-      기여합니다.
+      종종 관심 있는 오픈소스에 기여하곤 합니다. 주로 <code>AST</code>를 활용한
+      툴에 기여합니다. 아래는 지금까지 기여한 오픈소스 프로젝트 컨트리뷰션
+      기록입니다! 그래프를 클릭하면 기여한 <code>Pull Request</code> 목록을 확인하실
+      수 있습니다.
     </p>
     <ContributionsChart client:load items={ITEMS as any} />
   </div>
   <div class="mb-7">
-    <h2 class="text-2xl pb-4 border-b mb-4">Open Source Projects</h2>
-    <p>가끔씩 떠오르는 아이디어를 구현해서 오픈소스 프로젝트로 공유합니다.</p>
+    <h2 class="text-2xl pb-4 border-b mb-4">오픈소스 프로젝트</h2>
+    <p>
+      가끔씩 떠오르는 아이디어를 구현해서 오픈소스 프로젝트로 공유합니다. 유용한
+      프로젝트라고 생각되시면 github star 를 통해 응원해 주세요 ⭐.
+    </p>
     <ul>
       <li>
-        <div class="mb-2">
+        <div class="mt-6 mb-4">
           <a href="https://github.com/yeonjuan/html-eslint" target="_blank"
             ><strong>html-eslint</strong></a
           >
@@ -104,72 +114,60 @@ import ITEMS from "../../data/contributions.json";
           HTML 코드를 정적 분석할 수 있도록 하는 <a
             href="https://eslint.org/"
             target="_blank">ESLint</a
-          > 플러그인 프로젝트 입니다.
+          > 플러그인 프로젝트입니다. 업무 중에 HTML을 직접 작성할 일이 생겼는데,
+          ESLint로도 HTML Linting을 제공한다면 편리하겠다는 생각이 들어 개발하게
+          되었습니다. 프로젝트가 궁금하시다면 <a
+            href="https://html-eslint.org"
+            target="_blank">https://html-eslint.org</a
+          > 을 방문해 보세요!.
         </p>
       </li>
       <li>
-        <div class="mb-2">
+        <div class="mt-6 mb-4">
           <a href="https://github.com/yeonjuan/es-html-parser" target="_blank"
             ><strong>es-html-parser</strong></a
           >
         </div>
         <p>
-          HTML 코드를 파싱해서 ESTree 와 유사한 형태의 AST로 파싱하는 프로젝트
-          입니다. html-eslint 프로젝트에서 HTML 을 파싱할 때 사용하고 있습니다.
+          HTML 코드를 파싱해서 <a
+            href="https://github.com/estree/estree"
+            target="_blank">ESTree</a
+          > 와 유사한 형태의 AST로 파싱하는 프로젝트 입니다. html-eslint 프로젝트를
+          위해 ESTree Spec 과 호환되는 AST가 필요해서 개발하게 되었습니다. HTML 을
+          <a href="https://github.com/mykolaharmash/hyntax" target="_blank"
+            >hyntax</a
+          >를 fork 한 뒤 TypeScript 로 변환하면서 ESTree Spec과 호환되도록
+          만들었습니다.
         </p>
       </li>
       <li>
-        <div class="mb-2">
+        <div class="mt-6 mb-4">
           <a href="https://github.com/yeonjuan/es-html-parser" target="_blank"
             ><strong>es-html-parser</strong></a
           >
         </div>
         <p>
-          git diff 결과물을 분석해서 AST로 파싱하는 프로젝트 입니다. npm 에
-          패키지로 배포되어 있으며
+          git diff 결과물을 분석해서 AST로 파싱하는 프로젝트 입니다.
+          레포지토리의 커밋 기록을 통해 다양한 리포트를 만드는 프로젝트를 만들어
+          보고 싶었고 그 첫 발걸음으로 만든 프로젝트 입니다. 최초 계획한
+          프로젝트는 아직 시작하지 못했지만 npm 에 패키지를 올린 뒤로
           <a href="https://github.com/microsoft/PR-Metrics" target="_blank"
             >microsoft/PR-Metrics</a
           >, <a href="https://github.com/epicweb-dev/kcdshop" target="_blank"
             >epicweb-dev/kcdshop</a
           >, <a href="https://github.com/sourcegraph/cody" target="_blank">
             sourcegraph/cody</a
-          > 프로젝트들에서 이 패키지를 git diff 를 분석하는데 활용하고 있습니다.
+          >와 같은 프로젝트들에서 이 패키지를 git diff 를 분석하는데 활용하고
+          있습니다.
         </p>
       </li>
     </ul>
   </div>
   <div class="mb-7">
-    <h2 class="text-2xl pb-4 border-b">Activities</h2>
+    <h2 class="text-2xl pb-4 border-b">기타 활동</h2>
     <ul>
       <li>
-        <div class="mb-2">
-          <strong>2020 오픈소스 컨트리뷰톤 멘토링</strong>
-        </div>
-        <p>
-          오픈소스 컨트리뷰톤은 정보통신산업진흥원에서 주관하는 행사로,
-          오픈소스에 익숙하지 않은 개발자들을 대상으로한 멘토링 행사 입니다.
-          멘토로 참여해 ESLint, TypeScript-ESLint 프로젝트에 기여할 수 있도록
-          멘토링을 진행했습니다. <a
-            href="https://velog.io/@yeonjuan/ESLint-%EC%BB%A8%ED%8A%B8%EB%A6%AC%EB%B7%B0%ED%86%A4-%ED%9B%84%EA%B8%B0-%EB%AA%A8%EC%9D%8C"
-            target="_blank">멘티분들께서 남겨주신 후기</a
-          >
-        </p>
-      </li>
-      <li>
-        <div class="mb-2">
-          <strong>JS 13k Games 2019 Competition</strong>
-        </div>
-        <p>
-          <a href="https://js13kgames.com/">JS 13k Games</a>는 13kb이내로 웹에서
-          동작하는 게임을 만드는 대회입니다. 2019년에 참여해서 7등을
-          수상했습니다. <a
-            href="https://js13kgames.com/entries/back-attacker"
-            target="_blank">JS 13k Games - Back Attacker</a
-          >에서 직접 플레이해보실 수 있습니다!
-        </p>
-      </li>
-      <li>
-        <div class="mb-2">
+        <div class="mt-6 mb-4">
           <strong>ESLint - Committer</strong>
         </div>
         <p>
@@ -177,28 +175,104 @@ import ITEMS from "../../data/contributions.json";
             href="https://eslint.org/team/"
             target="_blank">ESLint 팀</a
           >에서 커미터로 활동을 했습니다. 기능 개발, 버그 수정, 코드 리뷰, 이슈
-          관리를 하며 프로젝트 메인테이닝에 참여했습니다.
+          관리를 하며 프로젝트 메인테이닝에 참여했습니다. <br />
+          개발 1~2년차에 처음으로 깊게 참여한 오픈소스 프로젝트였는데, 프로젝트에
+          기여하고 코드 리뷰를 받으면서 많은 개발 지식을 습득할 수 있었습니다. 기여를
+          인정받아 <a href="https://opencollective.com/yeonjuan">소액의 보상</a
+          >을 받기도 하는 특별한 경험도 할 수 있었습니다. 💸<br /> 이후에는 Linter
+          프로젝트와 TypeScript에 관심이 생겨 현재는 <a
+            href="https://typescript-eslint.io/"
+            target="_blank">typescript-eslint</a
+          > 프로젝트에 기여를 하고 있습니다. <a
+            href="https://github.com/eslint/eslint/commits?author=yeonjuan"
+            target="_blank">여기서</a
+          > ESLint에 기여한 자세한 내용을 확인하실 수 있습니다.
         </p>
       </li>
       <li>
-        <div class="mb-2">
+        <div class="mt-6 mb-4">
           <strong>Rome - Core Contributor</strong>
         </div>
         <p>
-          2021년 <a href="https://github.com/rome/tools" target="_blank"
+          2021년, <a href="https://github.com/rome/tools" target="_blank"
             >Rome 팀</a
-          >에서 코어 컨트리뷰터로 활동을 했습니다. 주로 CSS를 파싱하는 파서
-          개발에 참여했습니다.
+          >에서 코어 컨트리뷰터로 활동을 했습니다. Rome 은 Linter, Formatter,
+          Bundler를 한 프로젝트에서 모두 구현하는 프로젝트였습니다. 저는 CSS를
+          파싱하는 파서 개발에 주로 참여했습니다. <a
+            href="https://github.com/biomejs/biome/commits?author=yeonjuan"
+            >여기서</a
+          > 제가 기여한 내용을 확인하실 수 있습니다. <br />개발에 참여하면서 CSS
+          문법 스펙을 확인해 가며 파서를 개발하는 특별한 경험을 할 수
+          있었습니다. 성능 문제로 프로젝트가 Rust 기반으로 변경되면서 더 이상
+          참여하지는 않게 되었습니다. Rome 프로젝트는 현재 종료되었지만 <a
+            href="https://github.com/biomejs/biome"
+            target="_blank">birome</a
+          >에서 fork 되어 개발되고 있습니다.
+        </p>
+      </li>
+      <li>
+        <div class="mt-6 mb-4">
+          <strong>2020 오픈소스 컨트리뷰톤 멘토링</strong>
+        </div>
+        <p>
+          오픈소스 컨트리뷰톤은 정보통신 산업 진흥원에서 주관하는 행사로,
+          오픈소스에 익숙하지 않은 개발자들을 대상으로 한 멘토링 행사입니다.
+          멘토로 참여해 ESLint, TypeScript-ESLint 프로젝트에 기여할 수 있도록
+          멘토링을 진행했습니다.<br /> 대부분의 멘티분들이 열심히 참여해 주셔서 1회
+          이상 오픈소스에 기여하는 좋은 성과를 이룰 수 있었습니다 🎉. 자세한 활동이
+          궁금하시다면 <a
+            href="https://velog.io/@yeonjuan/ESLint-%EC%BB%A8%ED%8A%B8%EB%A6%AC%EB%B7%B0%ED%86%A4-%ED%9B%84%EA%B8%B0-%EB%AA%A8%EC%9D%8C"
+            target="_blank">멘티분들의 후기</a
+          >를 확인해 보세요!
+        </p>
+      </li>
+      <li>
+        <div class="mt-6 mb-4">
+          <strong>JS 13k Games 2019 Competition</strong>
+        </div>
+        <p>
+          <a href="https://js13kgames.com/">JS 13k Games</a>는 모든 리소스
+          크기의 합을 13kb이내로 제한해서 웹 게임을 만드는 대회입니다. 13kb
+          이내로 만들어야 한다는 제약이 재밌어 보여서 참여하게 되었고 7등을
+          수상했습니다 🎉. <br />
+          2019년의 주제는 "Back" 이었는데, 저는 '뒤에서 적을 공격'해야 클리어 가능한
+          Back Attacker라는 게임을 제출했습니다. 게임이 궁금하시다면
+          <a href="https://js13kgames.com/entries/back-attacker" target="_blank"
+            >JS 13k Games - Back Attacker</a
+          >에서 직접 플레이 해보실 수 있습니다! (모바일 사이즈 스크린은 지원하지
+          않습니다)
+        </p>
+      </li>
+      <li>
+        <div class="mt-6 mb-4">
+          <strong>Dev Blog</strong>
+        </div>
+        <p>
+          가끔씩 개발과 관련된 블로그 포스팅을 하고 있습니다. 최근까지는 <a
+            href="https://kofearticle.substack.com/about"
+            href="_blank">Korean FE Article Team</a
+          >에서 활동하면서 흥미로운 외국 개발 블로그 글을 번역해서 포스팅
+          했습니다. 직접 작성한 글중 가장 반응이 좋았던 글은 <code>null</code> 과
+          <code>undefined</code>에 대해 비교한
+          <a
+            href="https://github.com/yeonjuan/dev-blog/blob/master/JavaScript/return-null-vs-undefined.md"
+            >return null vs undefined</a
+          > 입니다. <a
+            href="https://github.com/naver/fe-news/blob/master/issues/2020-08.md#return-null-vs-undefined"
+            >naver/fe-news 2020-08</a
+          >에서 포스팅이 소개되기도 하는 보람찬 경험을 할 수 있었습니다. <a
+            href="https://github.com/yeonjuan/dev-blog/tree/master"
+            target="_blank">이곳</a
+          >에서 다른 포스팅들도 확인해 보세요.
         </p>
       </li>
     </ul>
   </div>
   <div>
-    <h2 class="text-2xl pb-4 border-b">Education</h2>
+    <h2 class="text-2xl pb-4 border-b">교육</h2>
     <ul class="mb-7">
       <li>
         <strong>한양대학교 컴퓨터 공학 학사</strong>
-        <span class="italic mx-2">- 2019 ~ now</span><br />
       </li>
     </ul>
   </div>
