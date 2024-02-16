@@ -3,6 +3,7 @@
   "display": "theme/sleek",
   "compilerOptions": {
     "types": ["astro/client"],
-    "baseUrl": "."
+    "baseUrl": ".",
+    "jsx": "react-jsx"
   }
 }

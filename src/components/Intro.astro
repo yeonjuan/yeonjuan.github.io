@@ -1,4 +1,6 @@
 ---
+import ContributionsChart from "../react-components/ContributionsChart";
+import ITEMS from "../../data/contributions.json";
 ---
 
 <section class="mb-8">
@@ -12,23 +14,178 @@
         연주안
       </span>
     </h1>
-    <p class="text-2xl pb-4">Software Developer</p>
+    <p class="text-2xl pb-4">FrontEnd Developer</p>
+  </div>
+  <div class="mb-5">
+    <p>
+      프론트엔드 개발자입니다. 주로 TypeScript, React로 프론트엔드를 개발합니다.<br
+      />
+      JavaScript 개발 툴 관련 오픈소스에 관심이 많습니다.
+    </p>
   </div>
   <div>
-    <p class="mb-5">
-    
-      
-      <a href={"https://github.com/flexdinesh/blogster"} target="_blank">Blogster</a>. 
-      Available in four themes  
-      <a href={"https://blogster-minimal.netlify.app"} target="_blank">minimal</a>, 
-      <a href={"https://blogster-sleek.netlify.app"} target="_blank">sleek</a>, 
-      <a href={"https://blogster-newspaper.netlify.app"} target="_blank">newspaper</a> and
-      <a href={"https://blogster-bubblegum.netlify.app"} target="_blank">bubblegum</a>. 
-      This blog is a demo for <strong>sleek</strong> theme.
-      Get started with one simple command.
+    <h2 class="text-2xl pb-4 border-b-2">Work experience</h2>
+    <ul class="mb-7">
+      <li>
+        <div class="mb-2">
+          <strong>LINE+</strong><span class="italic mx-2">- 2021.09 ~ now</span>
+        </div>
+        <ul class="unset">
+          <li class="pl-2">- NFT 플랫폼 웹앱 빌더 서비스 프론트 개발</li>
+          <li class="pl-2">- 웹앱 빌더 서비스 프론트/ 백엔드 개발</li>
+          <li class="pl-2">- Static Site Build 플랫폼 백엔드 개발</li>
+          <li class="pl-2">- Headless CMS 백엔드 개발</li>
+        </ul>
+      </li>
+      <li>
+        <div class="mb-2">
+          <strong>Kakao</strong>
+          <span class="italicm mx-2">- 2019.01 ~ 2021.09</span>
+        </div>
+        <ul class="unset">
+          <li class="pl-2">- 사내 코딩 스타일 가이드 제작</li>
+          <li class="pl-2">- 사내 Private NPM Registry 백엔드 개발</li>
+          <li class="pl-2">
+            - 웹 성능 측정 플랫폼 프론트 / 벡엔드 / JS SDK 개발
+          </li>
+          <li class="pl-2">- 프론트엔드 웹 성능 가이드 제작</li>
+          <li class="pl-2">- 웹 서비스 트래킹 JS SDK 개발</li>
+          <li class="pl-2">- 카카오톡 Covid 19 백신 QR 체크인 프론트 개발</li>
+          <li class="pl-2">
+            - 카카오 기술 블로그 포스팅: <a
+              href="https://tech.kakao.com/2019/12/05/make-better-use-of-eslint/"
+              target="_blank">ESLint 조금 더 잘 활용하기</a
+            >, <a
+              href="https://tech.kakao.com/2021/06/16/frontend-growth-10/"
+              target="_blank">주니어 FE 개발자 오픈소스 성장기</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <div class="mb-2">
+          <strong>KT</strong>
+          <span class="italic mx-2">2018.07 ~ 2018.08</span>
+        </div>
+        <ul class="unset">
+          <li class="pl-2">- 웹 지도 서비스 프론트 과제. (인턴)</li>
+        </ul>
+      </li>
+      <li>
+        <div class="mb-2">
+          <strong>중앙일보</strong>
+          <span class="italic mx-2">2019.01 ~ 2021.09</span>
+        </div>
+        <ul class="unset">
+          <li class="pl-2">- 특집 기사 웹 컨텐츠 프론트 개발. (계약직)</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="mb-7">
+    <h2 class="text-2xl pb-4 border-b-2">Open Source Contributions</h2>
+    <p>
+      개인 시간에는 관심 있는 오픈소스에 기여하곤 합니다. 주로 AST를 활용한 툴에
+      기여합니다.
     </p>
-    <p class="text-center whitespace-nowrap overflow-auto">
-      <code class="py-1 px-2">npx create-blogster@latest --theme sleek</code>
-    </p>
+    <ContributionsChart client:load items={ITEMS as any} />
+  </div>
+  <div class="mb-7">
+    <h2 class="text-2xl pb-4 border-b-2">Open Source Projects</h2>
+    <p>가끔씩 떠오르는 아이디어를 구현해서 오픈소스 프로젝트로 공유합니다.</p>
+    <ul>
+      <li>
+        <a href="https://github.com/yeonjuan/html-eslint" target="_blank"
+          ><strong>html-eslint</strong></a
+        >
+        <p>
+          HTML 코드를 정적 분석할 수 있도록 하는 <a
+            href="https://eslint.org/"
+            target="_blank">ESLint</a
+          > 플러그인 프로젝트 입니다.
+        </p>
+      </li>
+      <li>
+        <a href="https://github.com/yeonjuan/es-html-parser" target="_blank"
+          ><strong>es-html-parser</strong></a
+        >
+        <p>
+          HTML 코드를 파싱해서 ESTree 와 유사한 형태의 AST로 파싱하는 프로젝트
+          입니다. html-eslint 프로젝트에서 HTML 을 파싱할 때 사용하고 있습니다.
+        </p>
+      </li>
+      <li>
+        <a href="https://github.com/yeonjuan/parse-git-diff" target="_blank"
+          ><strong>parse-git-diff</strong></a
+        >
+        <p>
+          git diff 결과물을 분석해서 AST로 파싱하는 프로젝트 입니다. npm 에
+          패키지로 배포되어 있으며
+          <a href="https://github.com/microsoft/PR-Metrics" target="_blank"
+            >microsoft/PR-Metrics</a
+          >, <a href="https://github.com/epicweb-dev/kcdshop" target="_blank"
+            >epicweb-dev/kcdshop</a
+          >, <a href="https://github.com/sourcegraph/cody" target="_blank">
+            sourcegraph/cody</a
+          > 프로젝트들에서 이 패키지를 git diff 를 분석하는데 활용하고 있습니다.
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div class="mb-7">
+    <h2 class="text-2xl pb-4 border-b-2">Activities</h2>
+    <ul>
+      <li>
+        <strong>2020 오픈소스 컨트리뷰톤 멘토링</strong><br />
+        <p>
+          오픈소스 컨트리뷰톤은 정보통신산업진흥원에서 주관하는 행사로,
+          오픈소스에 익숙하지 않은 개발자들을 대상으로한 멘토링 행사 입니다.
+          멘토로 참여해 ESLint, TypeScript-ESLint 프로젝트에 기여할 수 있도록
+          멘토링을 진행했습니다. <a
+            href="https://velog.io/@yeonjuan/ESLint-%EC%BB%A8%ED%8A%B8%EB%A6%AC%EB%B7%B0%ED%86%A4-%ED%9B%84%EA%B8%B0-%EB%AA%A8%EC%9D%8C"
+            target="_blank">멘티분들께서 남겨주신 후기</a
+          >
+        </p>
+      </li>
+      <li>
+        <strong>JS 13k Games 2019 Competition</strong>
+        <p>
+          <a href="https://js13kgames.com/">JS 13k Games</a>는 13kb이내로 웹에서
+          동작하는 게임을 만드는 대회입니다. 2019년에 참여해서 7등을
+          수상했습니다. <a
+            href="https://js13kgames.com/entries/back-attacker"
+            target="_blank">JS 13k Games - Back Attacker</a
+          >에서 직접 플레이해보실 수 있습니다!
+        </p>
+      </li>
+      <li>
+        <strong>ESLint - Committer</strong>
+        <p>
+          2020년 부터 약 2년간 <a
+            href="https://eslint.org/team/"
+            target="_blank">ESLint 팀</a
+          >에서 커미터로 활동을 했습니다. 기능 개발, 버그 수정, 코드 리뷰, 이슈
+          관리를 하며 프로젝트 메인테이닝에 참여했습니다.
+        </p>
+      </li>
+      <li>
+        <strong>Rome - Core Contributor</strong>
+        <p>
+          2021년 <a href="https://github.com/rome/tools" target="_blank"
+            >Rome 팀</a
+          >에서 코어 컨트리뷰터로 활동을 했습니다. 주로 CSS를 파싱하는 파서
+          개발에 참여했습니다.
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h2 class="text-2xl pb-4 border-b-2">Education</h2>
+    <ul class="mb-7">
+      <li>
+        <strong>한양대학교 컴퓨터 공학 학사</strong>
+        <span class="italic mx-2">- 2019 ~ now</span><br />
+      </li>
+    </ul>
   </div>
 </section>
