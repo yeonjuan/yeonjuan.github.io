@@ -55,8 +55,7 @@ export default function ContributionsChart({
             <div
               key={owner}
               className={classnames(
-                "flex flex-col items-center border-b py-2 relative",
-                index === 0 && "border-t"
+                "flex flex-col items-center py-2 relative px-4"
               )}
             >
               <div

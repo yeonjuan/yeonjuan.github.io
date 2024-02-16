@@ -24,7 +24,7 @@ import ITEMS from "../../data/contributions.json";
     </p>
   </div>
   <div>
-    <h2 class="text-2xl pb-4 border-b-2">Work experience</h2>
+    <h2 class="text-2xl pb-4 border-b mb-4">Work experience</h2>
     <ul class="mb-7">
       <li>
         <div class="mb-2">
@@ -83,7 +83,7 @@ import ITEMS from "../../data/contributions.json";
     </ul>
   </div>
   <div class="mb-7">
-    <h2 class="text-2xl pb-4 border-b-2">Open Source Contributions</h2>
+    <h2 class="text-2xl pb-4 border-b mb-4">Open Source Contributions</h2>
     <p>
       개인 시간에는 관심 있는 오픈소스에 기여하곤 합니다. 주로 AST를 활용한 툴에
       기여합니다.
@@ -91,13 +91,15 @@ import ITEMS from "../../data/contributions.json";
     <ContributionsChart client:load items={ITEMS as any} />
   </div>
   <div class="mb-7">
-    <h2 class="text-2xl pb-4 border-b-2">Open Source Projects</h2>
+    <h2 class="text-2xl pb-4 border-b mb-4">Open Source Projects</h2>
     <p>가끔씩 떠오르는 아이디어를 구현해서 오픈소스 프로젝트로 공유합니다.</p>
     <ul>
       <li>
-        <a href="https://github.com/yeonjuan/html-eslint" target="_blank"
-          ><strong>html-eslint</strong></a
-        >
+        <div class="mb-2">
+          <a href="https://github.com/yeonjuan/html-eslint" target="_blank"
+            ><strong>html-eslint</strong></a
+          >
+        </div>
         <p>
           HTML 코드를 정적 분석할 수 있도록 하는 <a
             href="https://eslint.org/"
@@ -106,18 +108,22 @@ import ITEMS from "../../data/contributions.json";
         </p>
       </li>
       <li>
-        <a href="https://github.com/yeonjuan/es-html-parser" target="_blank"
-          ><strong>es-html-parser</strong></a
-        >
+        <div class="mb-2">
+          <a href="https://github.com/yeonjuan/es-html-parser" target="_blank"
+            ><strong>es-html-parser</strong></a
+          >
+        </div>
         <p>
           HTML 코드를 파싱해서 ESTree 와 유사한 형태의 AST로 파싱하는 프로젝트
           입니다. html-eslint 프로젝트에서 HTML 을 파싱할 때 사용하고 있습니다.
         </p>
       </li>
       <li>
-        <a href="https://github.com/yeonjuan/parse-git-diff" target="_blank"
-          ><strong>parse-git-diff</strong></a
-        >
+        <div class="mb-2">
+          <a href="https://github.com/yeonjuan/es-html-parser" target="_blank"
+            ><strong>es-html-parser</strong></a
+          >
+        </div>
         <p>
           git diff 결과물을 분석해서 AST로 파싱하는 프로젝트 입니다. npm 에
           패키지로 배포되어 있으며
@@ -133,10 +139,12 @@ import ITEMS from "../../data/contributions.json";
     </ul>
   </div>
   <div class="mb-7">
-    <h2 class="text-2xl pb-4 border-b-2">Activities</h2>
+    <h2 class="text-2xl pb-4 border-b">Activities</h2>
     <ul>
       <li>
-        <strong>2020 오픈소스 컨트리뷰톤 멘토링</strong><br />
+        <div class="mb-2">
+          <strong>2020 오픈소스 컨트리뷰톤 멘토링</strong>
+        </div>
         <p>
           오픈소스 컨트리뷰톤은 정보통신산업진흥원에서 주관하는 행사로,
           오픈소스에 익숙하지 않은 개발자들을 대상으로한 멘토링 행사 입니다.
@@ -148,7 +156,9 @@ import ITEMS from "../../data/contributions.json";
         </p>
       </li>
       <li>
-        <strong>JS 13k Games 2019 Competition</strong>
+        <div class="mb-2">
+          <strong>JS 13k Games 2019 Competition</strong>
+        </div>
         <p>
           <a href="https://js13kgames.com/">JS 13k Games</a>는 13kb이내로 웹에서
           동작하는 게임을 만드는 대회입니다. 2019년에 참여해서 7등을
@@ -159,7 +169,9 @@ import ITEMS from "../../data/contributions.json";
         </p>
       </li>
       <li>
-        <strong>ESLint - Committer</strong>
+        <div class="mb-2">
+          <strong>ESLint - Committer</strong>
+        </div>
         <p>
           2020년 부터 약 2년간 <a
             href="https://eslint.org/team/"
@@ -169,7 +181,9 @@ import ITEMS from "../../data/contributions.json";
         </p>
       </li>
       <li>
-        <strong>Rome - Core Contributor</strong>
+        <div class="mb-2">
+          <strong>Rome - Core Contributor</strong>
+        </div>
         <p>
           2021년 <a href="https://github.com/rome/tools" target="_blank"
             >Rome 팀</a
@@ -180,7 +194,7 @@ import ITEMS from "../../data/contributions.json";
     </ul>
   </div>
   <div>
-    <h2 class="text-2xl pb-4 border-b-2">Education</h2>
+    <h2 class="text-2xl pb-4 border-b">Education</h2>
     <ul class="mb-7">
       <li>
         <strong>한양대학교 컴퓨터 공학 학사</strong>
