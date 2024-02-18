@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="theme-sleek astro-EO2LQZMF" lang="en">
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Blogster">
+    <meta name="theme-color" content="#ffffff">
+
+<!-- 
+  This is an example. 
+  Use https://realfavicongenerator.net to generate the icons and manifest. 
+-->
+<link href="/favicon.ico" rel="shortcut icon">
+
+    <!-- Primary Meta Tags --><title>Blog | 연주안</title>
+<meta name="title" content="Blog | 연주안">
+<meta name="description" content="프론트엔드 개발자">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="Blog | 연주안">
+<meta property="og:description" content="프론트엔드 개발자">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://localhost:3000">
+<meta property="og:image" content="http://localhost:3000/images/og.png">
+<meta property="og:image:alt" content="My fancy website">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter -->
+<meta property="twitter:title" content="Blog | 연주안">
+<meta property="twitter:description" content="프론트엔드 개발자">
+
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="http://localhost:3000/images/og.png">
+<meta property="twitter:image:alt" content="My fancy website">
+<!-- {twitter.url && <meta property="twitter:url" content={twitter.url} />} -->
+
+    <!-- 
+    We don't want to use <link /> to load fonts from Google CDN 
+    but if you want to switch font this is the easiest way 
+    to check how your page will look with the new font.
+--><!-- 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=block"
+        rel="stylesheet"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet"
+    />
+--><link rel="preload" href="/fonts/open-sans-v34-latin-regular.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-700.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-800.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-italic.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><style>
+    /* open-sans-regular - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-regular.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-700 - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-700.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-800 - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 800;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-800.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-800.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-italic - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: italic;
+      font-weight: 400;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-italic.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+  </style>
+
+    <script>
+  // figure out user's preferred theme and set it as html class for tailwind before paint
+  (function () {
+    if (typeof window !== "undefined") {
+      const isSystemColorSchemeDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const storageTheme = sessionStorage.getItem("theme");
+      if (!storageTheme && isSystemColorSchemeDark) {
+        document.documentElement.classList.add("dark");
+        document.head.children.namedItem("theme-color").content = "#0e141b";
+      } else if (storageTheme === "dark") {
+        document.documentElement.classList.add("dark");
+        document.head.children.namedItem("theme-color").content = "#0e141b";
+      } else {
+        // we already server render light theme
+        document.head.children.namedItem("theme-color").content = "#ffffff";
+      }
+    }
+  })();
+</script>
+
+    <link href="/fontawesome/css/fontawesome.bareminimum.css" rel="stylesheet"><link href="/fontawesome/css/brands.bareminimum.css" rel="stylesheet"><link href="/fontawesome/css/solid.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/_...slug_.eb89f7da.css" />
+<link rel="stylesheet" href="/assets/blog.4101be42.css" /><script type="module" src="/hoisted.c270b695.js"></script></head>
+
+  <body class="min-h-screen max-w-3xl mx-auto px-6 sm:px-8 astro-EO2LQZMF">
+    <header class="astro-ZCCACUUV">
+  <a class="unset absolute z-10 left-[50%] -top-[100rem] translate-x-[-50%] bg-white text-black px-8 py-2 focus:top-[initial] astro-ZCCACUUV" href="#main">
+    Skip to content
+  </a>
+  <nav class="astro-ZCCACUUV">
+    <section class="text-text-bold astro-ZCCACUUV">
+      <ul class="unset flex gap-4 [&>li]:p-0 astro-ZCCACUUV">
+        <li class="astro-ZCCACUUV"><!-- DO NOT FORMAT. IT ADDS AN EXTRA SPACE ON RENDERED CONTENT. --><a href="/" class="astro-ZCCACUUV unset animated-link">Home</a></li>
+        <li class="astro-ZCCACUUV"><!-- DO NOT FORMAT. IT ADDS AN EXTRA SPACE ON RENDERED CONTENT. --><a href="/blog" class="astro-ZCCACUUV show unset animated-link">Blog</a></li>
+      </ul>
+    </section>
+  </nav>
+  <div class="max-[375px]:hidden justify-self-end py-2 flex items-center content-center text-text-bold astro-ZCCACUUV">
+    <a class="unset text-xl ml-4 hover:text-text-link astro-ZCCACUUV" href="https://github.com/yeonjuan" target="_blank">
+      <i class="fa-brands fa-github astro-ZCCACUUV" aria-hidden="true" title="Blogster on GitHub"></i>
+      <span class="fa-sr-only astro-ZCCACUUV">YeonJuAn GitHub</span>
+    </a>
+  </div>
+  <mode-toggle class="flex astro-2DKTDEXU">
+  <button class="justify-self-end bg-neutral-200 dark:bg-neutral-700 ml-4 inline-flex h-6 w-11 items-center rounded-full astro-2DKTDEXU" id="mode-toggle" role="switch" type="button" tabindex="0" aria-checked="false" data-headlessui-state=""><span class="sr-only astro-2DKTDEXU">Toggle dark mode</span><span id="mode-circle" class="light inline-block h-4 w-4 rounded-full bg-gradient-to-tr invisible astro-2DKTDEXU"><span class="absolute top-0 right-0 w-[10px] h-[10px] rounded-full bg-gray-700 scale-[0] astro-2DKTDEXU"></span>
+  </span>
+</button>
+</mode-toggle>
+
+
+
+
+</header>
+
+    <main id="main" class="astro-EO2LQZMF">
+      <section>
+    <ul>
+      <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/speeding-up-the-javascript-ecosystem-the-barrel-file-debacle" class="unset hover:text-text-link">
+                    자바스크립트 에코시스템의 속도 향상 - 배럴(Barrel) 파일의 대실패 (번역)
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2023-10-29T00:00:00.000Z">
+                  Oct 29, 2023
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/sharing-data-between-css-and-javascript-using-custom-properties" class="unset hover:text-text-link">
+                    커스텀 프로퍼티를 이용해 CSS 와 자바스크립트 간 데이터 공유하기 (번역)
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2023-05-01T00:00:00.000Z">
+                  May 1, 2023
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/should-you-really-use-usememo" class="unset hover:text-text-link">
+                    정말 리액트에서 useMemo를 사용해야 할까요? 알아봅시다. (번역)
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2023-03-19T00:00:00.000Z">
+                  Mar 19, 2023
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/well-known-symbols" class="unset hover:text-text-link">
+                    Well-Known symbols (번역)
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2023-02-25T00:00:00.000Z">
+                  Feb 25, 2023
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/json-parser-with-javascript" class="unset hover:text-text-link">
+                    JavaScript JSON 파서 (번역)
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2022-11-18T00:00:00.000Z">
+                  Nov 18, 2022
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/reduce-html-payload-with-nextjs" class="unset hover:text-text-link">
+                    Next.js에서 HTML 페이로드 줄이기 (번역)
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2022-01-18T00:00:00.000Z">
+                  Jan 18, 2022
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/Browser/send-an-http-request-on-page-exit" class="unset hover:text-text-link">
+                    사용자가 페이지를 떠날 때 안정적으로 HTTP 요청 보내기 (번역)
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2022-01-01T00:00:00.000Z">
+                  Jan 1, 2022
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/node-module-on-browser" class="unset hover:text-text-link">
+                    node 패키지 브라우저에서 사용하기 with Webpack 4
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2020-10-24T00:00:00.000Z">
+                  Oct 24, 2020
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/return-null-vs-undefined" class="unset hover:text-text-link">
+                    return undefined vs null
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2020-07-12T00:00:00.000Z">
+                  Jul 12, 2020
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/DesignPattern/builder-pattern-exploration" class="unset hover:text-text-link">
+                    빌더 패턴 탐구 (번역)
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2020-05-23T00:00:00.000Z">
+                  May 23, 2020
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/falsy-truthy" class="unset hover:text-text-link">
+                    falsy &amp; truthy
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2020-05-03T00:00:00.000Z">
+                  May 3, 2020
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/Review/hacktoberfest-2019" class="unset hover:text-text-link">
+                    Hacktoberfest 2019 참가 후기
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2019-10-22T00:00:00.000Z">
+                  Oct 22, 2019
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/Review/js-13k-2019" class="unset hover:text-text-link">
+                    Js13kGames 2019 참가 후기
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2019-10-06T00:00:00.000Z">
+                  Oct 6, 2019
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/coding-convention-2" class="unset hover:text-text-link">
+                    코딩 컨벤션 업무를 하며 알게 된 것들 - 2
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2019-09-06T00:00:00.000Z">
+                  Sep 6, 2019
+                </time>
+              </div>
+            </li><li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
+              <div class="title">
+                <a href="/blog/JavaScript/coding-convention-1" class="unset hover:text-text-link">
+                    코딩 컨벤션 업무를 하며 알게 된 것들 - 1
+                  </a>
+              </div>
+              <div class="text-text-muted text-sm italic">
+                <time datetime="2019-09-06T00:00:00.000Z">
+                  Sep 6, 2019
+                </time>
+              </div>
+            </li>
+    </ul>
+  </section>
+    </main>
+    <footer class="text-sm leading-[1.75] mt-4 astro-IKVAUYX3">
+  <div class="astro-IKVAUYX3">
+    This blog is built with
+    <a class="unset gradient-link tracking-wider font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#f57111] to-[#f79605] hover:after:bg-gradient-to-r hover:after:from-[#f57111] hover:after:to-[#f79605] astro-IKVAUYX3" href="https://github.com/flexdinesh/blogster" target="_blank">
+      Blogster</a>
+  </div>
+</footer>
+
+
+    
+  </body>
+</html>

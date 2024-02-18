@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="theme-sleek astro-RDWXBD3Z" lang="en">
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Blogster">
+    <meta name="theme-color" content="#ffffff">
+
+<!-- 
+  This is an example. 
+  Use https://realfavicongenerator.net to generate the icons and manifest. 
+-->
+<link href="/favicon.ico" rel="shortcut icon">
+
+    <!-- Primary Meta Tags --><title>falsy &amp; truthy</title>
+<meta name="title" content="falsy &#38; truthy">
+<meta name="description" content="description">
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="falsy &#38; truthy">
+<meta property="og:description" content="description">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://localhost:3000/blog/JavaScript/falsy-truthy">
+<meta property="article:author" content="연주안">
+<meta property="article:published_time" content="2020-05-03T00:00:00.000Z">
+
+
+
+
+
+<!-- Twitter -->
+<meta property="twitter:title" content="falsy &#38; truthy">
+<meta property="twitter:description" content="description">
+
+
+<meta property="twitter:card" content="summary_large_image">
+
+
+<!-- {twitter.url && <meta property="twitter:url" content={twitter.url} />} -->
+
+    <!-- 
+    We don't want to use <link /> to load fonts from Google CDN 
+    but if you want to switch font this is the easiest way 
+    to check how your page will look with the new font.
+--><!-- 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=block"
+        rel="stylesheet"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet"
+    />
+--><link rel="preload" href="/fonts/open-sans-v34-latin-regular.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-700.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-800.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-italic.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><style>
+    /* open-sans-regular - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-regular.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-700 - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-700.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-800 - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 800;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-800.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-800.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-italic - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: italic;
+      font-weight: 400;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-italic.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+  </style>
+
+    <script>
+  // figure out user's preferred theme and set it as html class for tailwind before paint
+  (function () {
+    if (typeof window !== "undefined") {
+      const isSystemColorSchemeDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const storageTheme = sessionStorage.getItem("theme");
+      if (!storageTheme && isSystemColorSchemeDark) {
+        document.documentElement.classList.add("dark");
+        document.head.children.namedItem("theme-color").content = "#0e141b";
+      } else if (storageTheme === "dark") {
+        document.documentElement.classList.add("dark");
+        document.head.children.namedItem("theme-color").content = "#0e141b";
+      } else {
+        // we already server render light theme
+        document.head.children.namedItem("theme-color").content = "#ffffff";
+      }
+    }
+  })();
+</script>
+
+    <link href="/fontawesome/css/fontawesome.bareminimum.css" rel="stylesheet"><link href="/fontawesome/css/brands.bareminimum.css" rel="stylesheet"><link href="/fontawesome/css/solid.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/_...slug_.eb89f7da.css" />
+<link rel="stylesheet" href="/assets/_...slug_.43380762.css" /><script type="module" src="/hoisted.fee86805.js"></script></head>
+
+  <body class="min-h-screen max-w-3xl mx-auto px-6 sm:px-8 astro-RDWXBD3Z">
+    <header class="astro-ZCCACUUV">
+  <a class="unset absolute z-10 left-[50%] -top-[100rem] translate-x-[-50%] bg-white text-black px-8 py-2 focus:top-[initial] astro-ZCCACUUV" href="#main">
+    Skip to content
+  </a>
+  <nav class="astro-ZCCACUUV">
+    <section class="text-text-bold astro-ZCCACUUV">
+      <ul class="unset flex gap-4 [&>li]:p-0 astro-ZCCACUUV">
+        <li class="astro-ZCCACUUV"><!-- DO NOT FORMAT. IT ADDS AN EXTRA SPACE ON RENDERED CONTENT. --><a href="/" class="astro-ZCCACUUV unset animated-link">Home</a></li>
+        <li class="astro-ZCCACUUV"><!-- DO NOT FORMAT. IT ADDS AN EXTRA SPACE ON RENDERED CONTENT. --><a href="/blog" class="astro-ZCCACUUV show unset animated-link">Blog</a></li>
+      </ul>
+    </section>
+  </nav>
+  <div class="max-[375px]:hidden justify-self-end py-2 flex items-center content-center text-text-bold astro-ZCCACUUV">
+    <a class="unset text-xl ml-4 hover:text-text-link astro-ZCCACUUV" href="https://github.com/yeonjuan" target="_blank">
+      <i class="fa-brands fa-github astro-ZCCACUUV" aria-hidden="true" title="Blogster on GitHub"></i>
+      <span class="fa-sr-only astro-ZCCACUUV">YeonJuAn GitHub</span>
+    </a>
+  </div>
+  <mode-toggle class="flex astro-2DKTDEXU">
+  <button class="justify-self-end bg-neutral-200 dark:bg-neutral-700 ml-4 inline-flex h-6 w-11 items-center rounded-full astro-2DKTDEXU" id="mode-toggle" role="switch" type="button" tabindex="0" aria-checked="false" data-headlessui-state=""><span class="sr-only astro-2DKTDEXU">Toggle dark mode</span><span id="mode-circle" class="light inline-block h-4 w-4 rounded-full bg-gradient-to-tr invisible astro-2DKTDEXU"><span class="absolute top-0 right-0 w-[10px] h-[10px] rounded-full bg-gray-700 scale-[0] astro-2DKTDEXU"></span>
+  </span>
+</button>
+</mode-toggle>
+
+
+
+
+</header>
+
+    <main id="main" class="astro-RDWXBD3Z">
+      <section class="blog-post prose max-w-none prose-sleek astro-RDWXBD3Z">
+        <time class="block mb-[2em] text-text-muted astro-RDWXBD3Z">May 3, 2020</time>
+        <article><paragraph>&lt;!--meta title: falsy &amp; truthy description: falsy 와 truthy 개념을 스펙을 통해 알아본 글. keywords: falsy, truthy, boolean --&gt;</paragraph><h1 id="falsy-and-truthy" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="falsy &#38; truthy" href="#falsy-and-truthy" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>falsy &amp; truthy</span></h1><paragraph><strong>falsy</strong> 와 <strong>truthy</strong>는 ECMA 스펙에 등장하는 단어는 아닙니다. JavaScript 동작을 이해하기 쉽게 하기위해 사용되는 단어입니다. 번역해보면 <strong>truthy</strong>는 &quot;참 같은 값&quot;, <strong>falsy</strong>는 &quot;거짓 같은 값&quot; 정도로 해석되며, 다음과 같이 정리할 수 있습니다.</paragraph><paragraph>&lt;dl&gt; &lt;dt&gt;&lt;strong&gt;falsy&lt;/strong&gt;&lt;/dt&gt; &lt;dd&gt;불리언 값으로 평가되는 문맥에서, <strong>false</strong>로 평가되는 값.&lt;/dd&gt; &lt;dd&gt;undefined, null, false, 0, -0, NaN, &quot;&quot;(빈문자열), 0n 등이 있음 (ECMA 2020 기준)&lt;/dd&gt;</paragraph><paragraph>&lt;dt&gt;&lt;strong&gt;truthy&lt;/strong&gt;&lt;/dt&gt; &lt;dd&gt;불리언 값으로 평가되는 문맥에서, <strong>true</strong>로 평가되는 값&lt;/dd&gt; &lt;dd&gt;falsy를 제외한 값들&lt;/dd&gt; &lt;/dl&gt;</paragraph><paragraph><strong>truthy</strong>와 <strong>falsy</strong> 개념은 JavaScript의 값이 특정 문법, 연산에서 <strong>true</strong>나 <strong>false</strong>로 동작한다는 것을 말해줍니다.</paragraph><paragraph>그럼 ECMA 스펙에서 어떤 부분이 <strong>falsy</strong>와 <strong>truthy</strong> 개념을 만들어 내는지 살펴 보겠습니다. 스펙 문서는 <a href="https://tc39.es/ecma262/2020/">ECMA 2020</a> 기준입니다.</paragraph><h2 id="toboolean" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="ToBoolean" href="#toboolean" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>ToBoolean</span></h2><paragraph>ECMA 스펙에서 어떤 값을 <strong>true</strong>, <strong>false</strong>로 변환하는 연산은 <a href="https://tc39.es/ecma262/2020/#sec-toboolean">7.1.2 ToBoolean</a>에 정의되어 있습니다. 이 연산은 추상 연산(Abstract Operation)으로 ECMASCript 언어의 런타임 스펙을 정의할 때 사용되는데, 값을 불리언 값으로 변환하는 역할을 합니다.</paragraph><paragraph><strong>추상 연산(Abstract Operation)</strong> : 스펙을 위해 정의된 연산으로, 스펙 내에서만 존재하며 실제로 구현되어 있는 연산은 아닙니다.</paragraph><paragraph>ToBoolean 스펙을 일부 번역한 내용을 살펴보겠습니다.</paragraph><paragraph><a href="https://tc39.es/ecma262/2020/#sec-toboolean">7.1.2 ToBoolean ( <em>argument</em> )</a></paragraph><paragraph><strong>7.1.2 ToBoolean ( <em>argument</em> )</strong> 추상 연산 ToBoolean 은 <em>argument</em>를 인자로 받고, <strong>Table 10</strong> 에 따라 <em>argument</em> 를 Boolean 타입 값으로 변환한다:</paragraph><paragraph><strong>Table 10: ToBoolean 변환</strong></paragraph><table><thead><tr><th>argument 타입</th><th>결과</th></tr></thead><tbody><tr><td>Undefined</td><td><strong>false</strong> 반환</td></tr><tr><td>Null</td><td><strong>false</strong> 반환</td></tr><tr><td>Boolean</td><td><em>argument</em> 를 그대로 반환</td></tr><tr><td>Number</td><td><em>argument</em> 가 0, -0, NaN 이면 <strong>false</strong>, 그 외 <strong>true</strong> 반환</td></tr><tr><td>String</td><td><em>argument</em> 가 빈 문자열(길이가 0인)이면 <strong>false</strong>; 아니면 <strong>true</strong> 반환</td></tr><tr><td>Symbol</td><td><strong>true</strong> 반환</td></tr><tr><td>BigInt</td><td><em>argument</em> 가 <strong>0n</strong> 이면 <strong>false</strong> 반환, 그외 <strong>true</strong> 반환</td></tr><tr><td>Object</td><td><strong>true</strong> 반환</td></tr></tbody></table><paragraph>ToBoolean(<em>argument</em>)의 <em>argument</em> 타입과 값에 따라 <strong>true</strong>를 반환하는지, <strong>false</strong>를 반환하는지 정의되어 있습니다.</paragraph><paragraph>값으로 정리해보면, undefined, null, false, 0, -0, NaN, &quot;&quot;(빈문자열), 0n 의 8개의 값만 <strong>false</strong>로 변환되고, 그 외의 값은 <strong>true</strong>로 변환되는 것을 알 수 있습니다. 우리가 이미 알고 있는 <strong>truthy</strong>, <strong>falsy</strong> 에 해당하는 값들과 일치합니다.</paragraph><paragraph>왠지 <strong>false</strong>로 변환될 것 같은 [], {} 도 Object 타입이기 때문에 <strong>true</strong>로 변환되는 값인 걸 알 수 있습니다.</paragraph><h2 id="toboolean" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="런타임 스펙에서 사용되는 ToBoolean" href="#toboolean" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>런타임 스펙에서 사용되는 ToBoolean</span></h2><paragraph>이제 런타임 스펙에서 ToBoolean이 사용되는 모습을 살펴보겠습니다. ToBoolean은 Not 연산자(!), if, while, for, 삼항 연산자 ...등의 런타임 스펙에서 특정 값을 불리언 타입 값으로 변환하는데 사용됩니다.</paragraph><ul><li>참고: 아래에서 ToBoolean 앞의 <strong>!</strong> 표시는 해당 연산이 추상 연산이라는 표시입니다.</li></ul><paragraph><a href="https://tc39.es/ecma262/2020/#sec-logical-not-operator">12.5.9  Logical NOT Operator ( ! )</a></paragraph><paragraph><strong>12.5.9 NOT 논리 연산자</strong></paragraph><paragraph><em>UnaryExpression</em>: ! <em>UnaryExpression</em></paragraph><ol><li><em>expr</em> 는 <em>UnaryExpression</em> 을 평가한 결과이다.</li><li><em>oldValue</em> 은 !<strong>ToBoolean</strong>(? GetValue(<em>expr</em>)) 이다.</li><li><em>oldValue</em> 가 true면, false를 반환한다.</li><li>true를 반환한다.</li></ol><paragraph>2번 단계에서 평가된 표현식의 값을 ToBoolean 을 통해 불리언 타입으로 바꾸는 것을 확인할 수 있습니다. 그리고 그 값이 <strong>true</strong>면 <strong>false</strong>, 아니면 <strong>true</strong>를 반환합니다.</paragraph><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token operator">!</span><span class="token string">"a"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token operator">!</span><span class="token keyword">null</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</code></pre>
+
+<paragraph><a href="https://tc39.es/ecma262/2020/#sec-logical-not-operator">13.6 The if Statement</a></paragraph><paragraph><strong>13.6 if 문</strong></paragraph><paragraph><em>IfStatement</em> : if ( <em>Expression</em> ) <em>Statement</em></paragraph><ol><li><em>exprRef</em> 는 Expression을 평가한 결과이다.</li><li><em>exprValue</em> 는 !<strong>ToBoolean</strong>(? GetValue(exprRef)) 이다.</li><li><em>exprValue</em> 가 false 이면<br/>a. NormalCompletion(undefined)를 반환한다.</li><li>아니면<br/>a. <em>stmtCompletion</em> 은 <em>Statement</em> 를 평가한 결과이다.<br/>b. Completion(UpdateEmpty(stmtCompletion, undefined)) 를 반환한다.</li></ol><paragraph>if 문 런타임 스펙의 2번 단계에서도 평가된 표현식의 값에 <strong>ToBoolean</strong> 연산을 수행해 값을 불리언 타입으로 바꿉니다. 그리고 그 값이 <strong>false</strong> 면 종료하고, 아니면 if 문의 <em>Statement</em> 를 실행하는 것을 알 수 있습니다.</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"출력 X"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"출력 O"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "출력 O"</span>
+</code></pre>
+
+<paragraph>스펙에 따라 실행되면서 ToBoolean 에 의해 값들이 불리언 값으로 변환됩니다. 이런 스펙이 개발자 관점에서는 특정 문맥에서 불리언처럼 동작하는 <strong>truthy</strong>, <strong>falsy</strong> 개념을 만들어 내는 것을 알 수 있습니다.</paragraph><h2 id="summary" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="Summary" href="#summary" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>Summary</span></h2><ol><li><paragraph><strong>truthy</strong>, <strong>falsy</strong>는 ECMA 스펙의 추상 연산 ToBoolean과 이 연산을 사용하는 런타임 스펙들에 의해 만들어집니다.</paragraph></li><li><paragraph>사실 아래 두 가지 내용만 알아두면 충분합니다.</paragraph></li></ol><ul><li><paragraph><strong>falsy</strong>: 불리언 값으로 평가되는 문맥에서(ex 조건문), <strong>false</strong> 로 평가되는 값.</paragraph><ul><li>undefined, null, false, 0, -0, NaN, &quot;&quot;(빈문자열), 0n</li></ul></li><li><paragraph><strong>truthy</strong>: 불리언 값으로 평가되는 문맥에서(ex 조건문), <strong>true</strong> 로 평가되는 값.</paragraph><ul><li><strong>falsy</strong> 가 아닌 나머지</li></ul></li></ul><paragraph>많은 글에서 <strong>truthy</strong>, <strong>falsy</strong>에 대해 설명하고 있고 이미 알고 있던 내용이었지만, 스펙에서 직접 확인하니 마음이 편안해졌습니다. 😚</paragraph></article>
+      </section>
+    </main>
+    <footer class="text-sm leading-[1.75] mt-4 astro-IKVAUYX3">
+  <div class="astro-IKVAUYX3">
+    This blog is built with
+    <a class="unset gradient-link tracking-wider font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#f57111] to-[#f79605] hover:after:bg-gradient-to-r hover:after:from-[#f57111] hover:after:to-[#f79605] astro-IKVAUYX3" href="https://github.com/flexdinesh/blogster" target="_blank">
+      Blogster</a>
+  </div>
+</footer>
+
+
+    
+  </body>
+</html>
