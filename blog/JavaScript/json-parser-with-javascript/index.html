@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="theme-sleek astro-RDWXBD3Z" lang="en">
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Blogster">
+    <meta name="theme-color" content="#ffffff">
+
+<!-- 
+  This is an example. 
+  Use https://realfavicongenerator.net to generate the icons and manifest. 
+-->
+<link href="/favicon.ico" rel="shortcut icon">
+
+    <!-- Primary Meta Tags --><title>JavaScript JSON 파서 (번역)</title>
+<meta name="title" content="JavaScript JSON 파서 (번역)">
+<meta name="description" content="description">
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="JavaScript JSON 파서 (번역)">
+<meta property="og:description" content="description">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://localhost:3000/blog/JavaScript/json-parser-with-javascript">
+<meta property="article:author" content="연주안">
+<meta property="article:published_time" content="2022-11-18T00:00:00.000Z">
+
+
+
+
+
+<!-- Twitter -->
+<meta property="twitter:title" content="JavaScript JSON 파서 (번역)">
+<meta property="twitter:description" content="description">
+
+
+<meta property="twitter:card" content="summary_large_image">
+
+
+<!-- {twitter.url && <meta property="twitter:url" content={twitter.url} />} -->
+
+    <!-- 
+    We don't want to use <link /> to load fonts from Google CDN 
+    but if you want to switch font this is the easiest way 
+    to check how your page will look with the new font.
+--><!-- 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=block"
+        rel="stylesheet"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet"
+    />
+--><link rel="preload" href="/fonts/open-sans-v34-latin-regular.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-700.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-800.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-italic.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><style>
+    /* open-sans-regular - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-regular.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-700 - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-700.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-800 - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 800;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-800.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-800.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-italic - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: italic;
+      font-weight: 400;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-italic.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+  </style>
+
+    <script>
+  // figure out user's preferred theme and set it as html class for tailwind before paint
+  (function () {
+    if (typeof window !== "undefined") {
+      const isSystemColorSchemeDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const storageTheme = sessionStorage.getItem("theme");
+      if (!storageTheme && isSystemColorSchemeDark) {
+        document.documentElement.classList.add("dark");
+        document.head.children.namedItem("theme-color").content = "#0e141b";
+      } else if (storageTheme === "dark") {
+        document.documentElement.classList.add("dark");
+        document.head.children.namedItem("theme-color").content = "#0e141b";
+      } else {
+        // we already server render light theme
+        document.head.children.namedItem("theme-color").content = "#ffffff";
+      }
+    }
+  })();
+</script>
+
+    <link href="/fontawesome/css/fontawesome.bareminimum.css" rel="stylesheet"><link href="/fontawesome/css/brands.bareminimum.css" rel="stylesheet"><link href="/fontawesome/css/solid.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/_...slug_.eb89f7da.css" />
+<link rel="stylesheet" href="/assets/_...slug_.43380762.css" /><script type="module" src="/hoisted.fee86805.js"></script></head>
+
+  <body class="min-h-screen max-w-3xl mx-auto px-6 sm:px-8 astro-RDWXBD3Z">
+    <header class="astro-ZCCACUUV">
+  <a class="unset absolute z-10 left-[50%] -top-[100rem] translate-x-[-50%] bg-white text-black px-8 py-2 focus:top-[initial] astro-ZCCACUUV" href="#main">
+    Skip to content
+  </a>
+  <nav class="astro-ZCCACUUV">
+    <section class="text-text-bold astro-ZCCACUUV">
+      <ul class="unset flex gap-4 [&>li]:p-0 astro-ZCCACUUV">
+        <li class="astro-ZCCACUUV"><!-- DO NOT FORMAT. IT ADDS AN EXTRA SPACE ON RENDERED CONTENT. --><a href="/" class="astro-ZCCACUUV unset animated-link">Home</a></li>
+        <li class="astro-ZCCACUUV"><!-- DO NOT FORMAT. IT ADDS AN EXTRA SPACE ON RENDERED CONTENT. --><a href="/blog" class="astro-ZCCACUUV show unset animated-link">Blog</a></li>
+      </ul>
+    </section>
+  </nav>
+  <div class="max-[375px]:hidden justify-self-end py-2 flex items-center content-center text-text-bold astro-ZCCACUUV">
+    <a class="unset text-xl ml-4 hover:text-text-link astro-ZCCACUUV" href="https://github.com/yeonjuan" target="_blank">
+      <i class="fa-brands fa-github astro-ZCCACUUV" aria-hidden="true" title="Blogster on GitHub"></i>
+      <span class="fa-sr-only astro-ZCCACUUV">YeonJuAn GitHub</span>
+    </a>
+  </div>
+  <mode-toggle class="flex astro-2DKTDEXU">
+  <button class="justify-self-end bg-neutral-200 dark:bg-neutral-700 ml-4 inline-flex h-6 w-11 items-center rounded-full astro-2DKTDEXU" id="mode-toggle" role="switch" type="button" tabindex="0" aria-checked="false" data-headlessui-state=""><span class="sr-only astro-2DKTDEXU">Toggle dark mode</span><span id="mode-circle" class="light inline-block h-4 w-4 rounded-full bg-gradient-to-tr invisible astro-2DKTDEXU"><span class="absolute top-0 right-0 w-[10px] h-[10px] rounded-full bg-gray-700 scale-[0] astro-2DKTDEXU"></span>
+  </span>
+</button>
+</mode-toggle>
+
+
+
+
+</header>
+
+    <main id="main" class="astro-RDWXBD3Z">
+      <section class="blog-post prose max-w-none prose-sleek astro-RDWXBD3Z">
+        <time class="block mb-[2em] text-text-muted astro-RDWXBD3Z">Nov 18, 2022</time>
+        <article><h1 id="javascript-json" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="JavaScript JSON 파서" href="#javascript-json" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>JavaScript JSON 파서</span></h1><blockquote><paragraph>이 글은 <a href="https://github.com/tanhauhau">Tan Li Hau</a>가 작성한 <a href="https://lihautan.com/json-parser-with-javascript/">JSON Parser with JavaScript</a>를 번역한 글입니다.</paragraph></blockquote><ul><li><a href="#%EB%AC%B8%EB%B2%95-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0">문법 이해하기</a></li><li><a href="#%ED%8C%8C%EC%84%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0">파서 구현하기</a></li><li><a href="#%EC%98%88%EC%83%81%EC%B9%98-%EB%AA%BB%ED%95%9C-%EC%9E%85%EB%A0%A5-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0">예상치 못한 입력 처리하기</a><ul><li><a href="#%EC%98%88%EC%83%81%EC%B9%98-%EB%AA%BB%ED%95%9C-%ED%86%A0%ED%81%B0">예상치 못한 토큰</a></li><li><a href="#%EC%98%88%EC%83%81%EC%B9%98-%EB%AA%BB%ED%95%9C-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%9D%98-%EB%81%9D">예상치 못한 문자열의 끝</a></li></ul></li><li><a href="#%EC%A1%B0%EA%B8%88-%EB%8D%94-%EB%82%98%EC%95%84%EA%B0%80%EA%B8%B0">조금 더 나아가기</a><ul><li><a href="#%EC%97%90%EB%9F%AC-%EC%BD%94%EB%93%9C%EC%99%80-%ED%91%9C%EC%A4%80-%EC%97%90%EB%9F%AC-%EB%A9%94%EC%8B%9C%EC%A7%80">에러 코드와 표준 에러 메시지</a></li><li><a href="#%EB%AC%B4%EC%97%87%EC%9D%B4-%EC%9E%98%EB%AA%BB%EB%90%98%EC%97%88%EB%8A%94%EC%A7%80-%EB%8D%94-%EC%9E%98-%EB%B3%B4%EC%97%AC%EC%A3%BC%EA%B8%B0">무엇이 잘못되었는지 더 잘 보여주기</a></li><li><a href="#%EC%97%90%EB%9F%AC-%EB%B3%B5%EA%B5%AC%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%A0%9C%EC%95%88">에러 복구를 위한 제안</a></li></ul></li><li><a href="#%EC%9A%94%EC%95%BD">요약</a></li></ul><paragraph>Cassidoo의 주간 소식지에 실린 이번 주 인터뷰 질문은,</paragraph><blockquote><paragraph>유효한 JSON 문자열을 가져와 객체(또는 선택한 언어가 사용하는 모든 것, 딕셔너리, 맵 등)로 변환하는 함수를 작성합니다. 입력 예제:</paragraph></blockquote><pre class="language-js"><code class="language-js"><span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token string">'{ "data": { "fish": "cake", "array": [1,2,3], "children": [ { "something": "else" }, { "candy": "cane" }, { "sponge": "bob" } ] } } '</span><span class="token punctuation">)</span>
+</code></pre>
+
+<paragraph>순간, 저는 그저 다음과 같이 쓰고 싶은 유혹을 받았습니다:</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> fakeParseJSON <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span>parse<span class="token punctuation">;</span>
+</code></pre>
+
+<paragraph>하지만, 생각해 보니, 저는 AST&lt;sup&gt;<a href="#footnote_ast">[1]</a>&lt;/sup&gt;에 관한 글을 꽤 많이 써왔습니다:</paragraph><ul><li><a href="https://lihautan.com/creating-custom-javascript-syntax-with-babel/">Babel로 커스텀 JavaScript 구문 만들기</a></li><li><a href="https://lihautan.com/step-by-step-guide-for-writing-a-babel-transformation/">커스텀 Babel 변환 작성을 위한 단계별 가이드</a></li><li><a href="https://lihautan.com/manipulating-ast-with-javascript/">JavaScript로 AST 다루기</a></li></ul><paragraph>AST를 조작하는 방법뿐만 아니라 컴파일러 파이프라인 개요도 다루지만, 파서를 구현하는 방법에 대해서는 많이 다루지 않았습니다.</paragraph><paragraph>왜냐하면, JavaScript 컴파일러 구현을 글로 표현하는 것은 너무 버거운 작업이기 때문입니다.</paragraph><paragraph>초조해 하지 마세요. JSON도 언어입니다. JSON도 <a href="https://www.json.org/json-en.html">스펙</a>에서 참고할 수 있는 자체 문법을 가지고 있습니다. JSON 파서를 작성하는데 필요한 지식과 기술은 JS 파서를 작성할 때도 활용할 수 있습니다.</paragraph><paragraph>그럼, 이제 JSON 파서를 작성해 봅시다!</paragraph><h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="문법 이해하기" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>문법 이해하기</span></h2><paragraph><a href="https://www.json.org/json-en.html">스펙 문서</a>를 보면 2개의 다이어그램이 있습니다.</paragraph><ul><li>왼쪽에 <a href="https://en.wikipedia.org/wiki/Syntax_diagram">구문 다이어그램 (또는 철도 다이어그램)</a></li></ul><paragraph><image alt="" src="/images/blog/json-parser-object.webp"></image> <em>이미지 출처: https://www.json.org/img/object.png</em></paragraph><ul><li>오른쪽에 <a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus–Naur 표기법</a>의 변형인, <a href="https://www.crockford.com/mckeeman.html">McKeeman 표기법</a></li></ul><pre class="language-typescript"><code class="language-typescript">json
+  element
+
+value
+  object
+  array
+  <span class="token builtin">string</span>
+  <span class="token builtin">number</span>
+  <span class="token string">"true"</span>
+  <span class="token string">"false"</span>
+  <span class="token string">"null"</span>
+
+object
+  <span class="token string">'{'</span> ws <span class="token string">'}'</span>
+  <span class="token string">'{'</span> members <span class="token string">'}'</span>
+</code></pre>
+
+<paragraph>두 다이어그램은 동일합니다.</paragraph><paragraph>하나는 시각적이고 하나는 텍스트 기반입니다. 텍스트 기반 문법 구문인 Backus–Naur 표기법은 보통 이 문법을 구문 분석하고 파서를 생성하는 다른 파서에 제공됩니다. 파서 개념에 대해 말하자면... 너무 복잡합니다!</paragraph><paragraph>이 글에서는, 철도 다이어그램에 초점을 맞출 것입니다. 왜냐하면 시각적이고 저에게 더 익숙하게 보였기 때문입니다.</paragraph><paragraph>첫 번째 철도 다이어그램을 살펴보겠습니다:</paragraph><paragraph><image alt="" src="/images/blog/json-parser-object.webp"></image> <em>이미지 출처: https://www.json.org/img/object.png</em></paragraph><paragraph>이것이 JSON에서 <strong>&quot;object&quot;</strong> 에 대한 문법입니다.</paragraph><paragraph>왼쪽에서 화살표를 따라 시작하고 오른쪽에서 끝납니다.</paragraph><paragraph>원들은 <code>{</code>, <code>,</code>, <code>:</code>, <code>}</code>과 같은 문자이며, <code>whitespace</code>, <code>string</code>, <code>value</code>과 같은 상자들은 다른 문법의 자리를 표시합니다. 그래서 &quot;whitespace&quot;를 파싱하기 위해서는 <strong>&quot;whitespace&quot;</strong> 에 대한 문법을 살펴보아야 합니다.</paragraph><paragraph>따라서, 객체인 경우 왼쪽부터 시작해서 첫 번째 문자는 열린 괄호여야 합니다, <code>{</code>. 그리고 여기서 두 가지 옵션이 있습니다.</paragraph><ul><li><code>whitespace</code> → <code>}</code> → 종료, 또는</li><li><code>whitespace</code> → <code>string</code> → <code>whitespace</code> → <code>:</code> → <code>value</code> → <code>}</code> → 종료</li></ul><paragraph>물론, &quot;value&quot;에 도달하면 다음 옵션을 선택할 수 있습니다.</paragraph><ul><li>→ <code>}</code> → 종료, 또는</li><li>→ <code>,</code> → <code>whitespace</code> → ... → value</li></ul><paragraph>그리고 아래처럼 갈 때까지 계속해서 반복할 수 있습니다:</paragraph><ul><li>→ <code>}</code>  →  종료</li></ul><paragraph>그럼 이제 철도 다이어그램에 대해 잘 알고 있는 것 같네요. 다음 섹션으로 넘어가겠습니다.</paragraph><h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="파서 구현하기" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>파서 구현하기</span></h2><paragraph>다음과 같은 구조로 시작해 보겠습니다:</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<paragraph><code>i</code>를 현재 문자의 인덱스로 초기화하고, <code>i</code>가 <code>str</code>의 끝에 도달하면 종료됩니다.</paragraph><paragraph><strong>&quot;object&quot;</strong> 에 대한 문법을 구현해봅시다:</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'{'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    i <span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 만약 `}` 가 아니라면</span>
+    <span class="token comment">// string -> whitespace -> ':' -> value -> ... 경로를 가게 됩니다.</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">'}'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> key <span class="token operator">=</span> <span class="token function">parseString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">eatColon</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token function">parseValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<paragraph><code>parseObject</code> 에서 &quot;string&quot;, &quot;whitespace&quot;와 같이 다른 문법의 구문 분석을 호출할 것이며, 그것들을 구현하면, 모든 것이 동작할 것입니다 🤞.</paragraph><paragraph>한 가지 깜빡한 것은 쉼표(<code>,</code>)에 대한 것입니다. <code>,</code> 는 <code>whitespace</code> → <code>string</code> → <code>whitespace</code> → :`` → ... 의 두 번째 루프를 시작하기 전 한 번만 등장합니다.</paragraph><paragraph>이를 기반으로 다음 행을 추가합니다:</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">function</span> <span class="token function">parseObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'{'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      i<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">let</span> initial <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token comment">// '}' 가 아니라면</span>
+      <span class="token comment">// string -> whitespace -> ':' -> value -> ... 경로를 따라갑니다.</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">'}'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>initial<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">eatComma</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">const</span> key <span class="token operator">=</span> <span class="token function">parseString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">eatColon</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token function">parseValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initial <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment">// '}'의 다음 문자로 이동합니다.</span>
+      i<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<paragraph>몇 가지 네이밍 컨벤션:</paragraph><ul><li>문법을 기반으로 코드를 파싱하고 반환 값을 사용할 때 <code>parseSomething</code> 을 사용합니다.</li><li>어떤 문자가 존재할 것으로 예상하지만, 그 문자를 사용하지 않을 때 <code>eatSomething</code>을 사용합니다.</li><li>어떤 문자의 존재 여부가 상관없을 때 <code>skipSomething</code> 을 사용합니다.</li></ul><paragraph><code>eatComma</code>와 <code>eatColon</code>을 구현해 봅시다:</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  <span class="token keyword">function</span> <span class="token function">eatComma</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">','</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Expected ",".'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    i<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">eatColon</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">':'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Expected ":".'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    i<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<paragraph>그래서 <code>parseObject</code> 문법 구현을 완료했는데, 이 파싱 함수의 반환 값은 무엇일까요?</paragraph><paragraph>역시, JavaScript 객체를 반환해야 합니다:</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">function</span> <span class="token function">parseObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'{'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      i<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">let</span> initial <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token comment">// '}' 가 아니라면</span>
+      <span class="token comment">// string -> whitespace -> ':' -> value -> ... 경로를 따라갑니다.</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">'}'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>initial<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">eatComma</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">const</span> key <span class="token operator">=</span> <span class="token function">parseString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">eatColon</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token function">parseValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        result<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+        initial <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment">// '}' 다음 문자로 이동합니다.</span>
+      i<span class="token operator">++</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<paragraph>이제 &quot;object&quot; 문법을 구현하는 것을 보았으니 &quot;array&quot; 문법에 도전해 볼 차례입니다.</paragraph><paragraph><image alt="" src="/images/blog/json-parser-array.webp"></image> <em>이미지 출처: https://www.json.org/img/array.png</em></paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  <span class="token keyword">function</span> <span class="token function">parseArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'['</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      i<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">let</span> initial <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">']'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>initial<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">eatComma</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token function">parseValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initial <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment">// ']' 다음 문자로 이동합니다.</span>
+      i<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<paragraph>이제, 조금 더 흥미로운 문법인 &quot;value&quot;로 넘어갑니다:</paragraph><paragraph><image alt="" src="/images/blog/json-parser-value.webp"></image> <em>이미지 출처: https://www.json.org/img/value.png</em></paragraph><paragraph>value는 &quot;whitespace&quot;로 시작하고, &quot;string&quot;, &quot;number&quot;, &quot;object&quot;, &quot;array&quot;, &quot;true&quot;, &quot;false&quot; 또는 &quot;null&quot; 모두 다음에 오고, &quot;whitespace&quot;로 끝이 납니다.</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  <span class="token keyword">function</span> <span class="token function">parseValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> value <span class="token operator">=</span>
+      <span class="token function">parseString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">??</span>
+      <span class="token function">parseNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">??</span>
+      <span class="token function">parseObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">??</span>
+      <span class="token function">parseArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">??</span>
+      <span class="token function">parseKeyword</span><span class="token punctuation">(</span><span class="token string">'true'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">??</span>
+      <span class="token function">parseKeyword</span><span class="token punctuation">(</span><span class="token string">'false'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token operator">??</span>
+      <span class="token function">parseKeyword</span><span class="token punctuation">(</span><span class="token string">'null'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">skipWhitespace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+
+<paragraph><code>??</code> 은 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing">nullish 병합 연산자</a>인데, <code>||</code>처럼 기본값을 지정하는 데 사용하지만, <code>foo || default</code>에서  <code>||</code>는 <code>foo</code> 가 falsy 일 때 <code>default</code>를 반환하는 반면 nullish 병합 연산자는 <code>foo</code>가 <code>null</code> 또는 <code>undefined</code>일 때 <code>default</code>를 반환합니다.</paragraph><paragraph>parseKeyword는 현재 <code>str.slice(i)</code> 가 키워드 문자열과 일치하는지 확인하고, 일치하면 키워드 값을 반환합니다.</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  <span class="token keyword">function</span> <span class="token function">parseKeyword</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> i <span class="token operator">+</span> name<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">===</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      i <span class="token operator">+=</span> name<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+      <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<paragraph>여기까지 <code>parseValue</code>였습니다!</paragraph><paragraph>아직 3개의 문법이 더 남아 있지만, 이만 줄이고 다음의 CodeSandBox에서 구현할 것입니다:</paragraph><paragraph>https://codesandbox.io/embed/json-parser-k4c3w</paragraph><paragraph>모든 문법을 구현한 후에, 이제 <code>parseValue</code>에 의해 반환되는 json의 값을 반환합니다.</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token function">parseValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<paragraph>바로 이겁니다!</paragraph><paragraph>지금까지는 모두 순조로운 부분이었습니다. 어떤 까다로운 부분들이 있을까요?</paragraph><h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="예상치 못한 입력 처리하기" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>예상치 못한 입력 처리하기</span></h2><paragraph>우리는 훌륭한 개발자로서 예외 사항도 우아하게 처리할 수 있어야 합니다. 파서의 경우, 개발자에게 적절한 오류 메시지를 출력함으로써 예외 사항을 처리할 수 있습니다.</paragraph><paragraph>가장 일반적인 두 가지 오류 사례를 살펴보겠습니다.</paragraph><ul><li>예상치 못한 토큰</li><li>예상치 못한 문자열의 끝</li></ul><h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="예상치 못한 토큰" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>예상치 못한 토큰</span></h2><h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="예상치 못한 문자열의 끝" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>예상치 못한 문자열의 끝</span></h2><paragraph>모든 while 루프에서, 예를 들어 <code>parseObject</code>의 while 루프를 보면:</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  <span class="token keyword">function</span> <span class="token function">parseObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">'}'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</code></pre>
+
+<paragraph>문자열의 길이를 벗어난 문자에 접근하지 않도록 해야 합니다. 이 문제는 문자열이 예기치 않게 종료되었을 때 발생하며, 이 예에서는 여전히 닫는 문자 &quot;}&quot;를 기다리고 있습니다:</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  <span class="token keyword">function</span> <span class="token function">parseObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span>length <span class="token operator">&amp;&amp;</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">'}'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">checkUnexpectedEndOfInput</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// '}' 의 다음 문자로 이동</span>
+    i<span class="token operator">++</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="조금 더 나아가기" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>조금 더 나아가기</span></h2><paragraph>여러분의 주니어 개발자 때를 기억하시나요? 암호 같은 메시지와 함께 문법 에러를 만날 때마다, 무엇이 잘못되었는지 전혀 알지 못하시진 않으셨나요?</paragraph><paragraph>이제 더 경험이 쌓였으니, 이 순환과 소리 지르는 것을 멈추고</paragraph><pre class="language-bash"><code class="language-bash">Unexpected token <span class="token string">"a"</span>
+</code></pre>
+
+<paragraph>사용자가 화면을 보며 당황하게 할 때입니다.</paragraph><paragraph>소리를 지르는 것보다 오류 메시지를 처리하는 데 더 좋은 방법이 많이 있습니다. 다음은 파서에 추가하는 것을 고려할 수 있는 몇 가지 사항입니다.</paragraph><h3 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="에러 코드와 표준 에러 메시지" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>에러 코드와 표준 에러 메시지</span></h3><paragraph>이것은 사용자가 Google에 도움을 요청할 때 표준 키워드로 유용합니다.</paragraph><pre class="language-typescript"><code class="language-typescript"><span class="token comment">// 이것보단</span>
+Unexpected token <span class="token string">"a"</span>
+Unexpected end <span class="token keyword">of</span> input
+
+<span class="token comment">// 이렇게 보여주세요</span>
+<span class="token constant">JSON_ERROR_001</span> Unexpected token <span class="token string">"a"</span>
+<span class="token constant">JSON_ERROR_002</span> Unexpected end <span class="token keyword">of</span> input
+</code></pre>
+
+<h3 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="무엇이 잘못되었는지 더 잘 보여주기" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>무엇이 잘못되었는지 더 잘 보여주기</span></h3><paragraph>Babel과 같은 파서는, 코드 프레임을 보여줍니다. 코드 프레임은 밑줄, 화살표 또는 잘못된 부분이 강조 표시된 코드의 일부분입니다.</paragraph><pre class="language-bash"><code class="language-bash">// 이것보단
+Unexpected token <span class="token string">"a"</span> at position <span class="token number">5</span>
+
+// 이렇게 보여주세요
+<span class="token punctuation">{</span> <span class="token string">"b"</span>a
+      ^
+JSON_ERROR_001 Unexpected token <span class="token string">"a"</span>
+</code></pre>
+
+<paragraph>코드의 일부분을 출력하는 방법에 대한 예:</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fakeParseJSON</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  <span class="token keyword">function</span> <span class="token function">printCodeSnippet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> from <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> i <span class="token operator">-</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> trimmed <span class="token operator">=</span> from <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> padding <span class="token operator">=</span> <span class="token punctuation">(</span>trimmed <span class="token operator">?</span> <span class="token number">3</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>i <span class="token operator">-</span> from<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> snippet <span class="token operator">=</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">(</span>trimmed <span class="token operator">?</span> <span class="token string">'...'</span> <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token operator">+</span> str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>from<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token string">' '</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span>padding<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'^'</span><span class="token punctuation">,</span>
+      <span class="token string">' '</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span>padding<span class="token punctuation">)</span> <span class="token operator">+</span> message<span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>snippet<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<h3 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="에러 복구를 위한 제안" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>에러 복구를 위한 제안</span></h3><paragraph>가능하다면, 무엇이 잘못되었는지 설명하고 해결 방법을 제안하세요.</paragraph><pre class="language-bash"><code class="language-bash">// 이것보단
+Unexpected token <span class="token string">"a"</span> at position <span class="token number">5</span>
+
+// 이렇게 보여주세요
+<span class="token punctuation">{</span> <span class="token string">"b"</span>a
+      ^
+JSON_ERROR_001 Unexpected token <span class="token string">"a"</span><span class="token builtin class-name">.</span>
+Expecting a <span class="token string">":"</span> over here, eg:
+<span class="token punctuation">{</span> <span class="token string">"b"</span><span class="token builtin class-name">:</span> <span class="token string">"bar"</span> <span class="token punctuation">}</span>
+      ^
+You can learn <span class="token function">more</span> about valid JSON string <span class="token keyword">in</span> http://goo.gl/xxxxx
+</code></pre>
+
+<paragraph>가능하면, 파서가 지금까지 수집한 컨텍스트를 기반으로 제안을 제공하세요.</paragraph><pre class="language-bash"><code class="language-bash">fakeParseJSON<span class="token punctuation">(</span><span class="token string">'"Lorem ipsum'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+// 이것보단
+Expecting a <span class="token variable"><span class="token variable">`</span>"<span class="token variable">`</span></span> over here, eg:
+<span class="token string">"Foo Bar"</span>
+        ^
+
+// 이렇게 보여주세요
+Expecting a <span class="token variable"><span class="token variable">`</span>"<span class="token variable">`</span></span> over here, eg:
+<span class="token string">"Lorem ipsum"</span>
+            ^
+</code></pre>
+
+<paragraph>컨텍스트를 바탕으로 한 제안은 더 공감할 수 있고 실행할 수 있는 것처럼 느껴질 것입니다.</paragraph><paragraph>다음 모든 제안 사항을 염두에 두고 업데이트된 CodeSandBox를 확인하세요.</paragraph><ul><li>의미 있는 에러 메시지</li><li>실패 지점의 에러를 가리키는 코드 스니펫</li><li>에러 복구를 위한 제공</li></ul><paragraph>https://codesandbox.io/embed/json-parser-hjwxk</paragraph><paragraph>또한, Elm이 어떻게 Elm 컴파일러의 UX 문제를 개선하는지에 대한 <a href="https://twitter.com/czaplic">Evan Czaplicki</a>의 <a href="https://elm-lang.org/news/compiler-errors-for-humans">사람을 위한 컴파일러 에러</a>를 읽어보세요.</paragraph><h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="요약" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>요약</span></h2><paragraph>파서를 구현하기 위해서는 문법부터 시작해야 합니다.</paragraph><paragraph>철도 다이어그램이나 Backus-Naur 표기법으로 문법을 공식화할 수 있습니다. 문법을 설계하는 것이 가장 어려운 단계입니다.</paragraph><paragraph>문법에 익숙해지면, 이를 기반으로 파서 구현을 시작할 수 있습니다.</paragraph><paragraph>에러 처리는 중요하며, 더 중요한 것은 사용자가 에러 메시지를 수정하는 방법을 알 수 있도록 의미 있는 에러 메시지를 사용하는 것입니다.</paragraph><paragraph>이제 간단한 파서가 어떻게 구현되는지 알았으니, 좀 더 복잡한 파서를 살펴봐야 할 때입니다.</paragraph><ul><li><a href="https://github.com/babel/babel/tree/master/packages/babel-parser">Babel 파서</a></li><li><a href="https://github.com/sveltejs/svelte/tree/master/src/compiler/parse">Svelte 파서</a></li></ul><paragraph>마지막으로, <a href="https://twitter.com/cassidoo">@cassidoo</a>를 팔로우하세요. 그녀의 주간 소식지는 굉장합니다!</paragraph><hr/><ol><li>&lt;a name=&quot;footnote_ast&quot;&gt;AST&lt;/a&gt;: Abstract Syntax Tree의 약자로 소스 코드를 분석해 트리 형태로 나타낸 데이터 구조이다.</li></ol></article>
+      </section>
+    </main>
+    <footer class="text-sm leading-[1.75] mt-4 astro-IKVAUYX3">
+  <div class="astro-IKVAUYX3">
+    This blog is built with
+    <a class="unset gradient-link tracking-wider font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#f57111] to-[#f79605] hover:after:bg-gradient-to-r hover:after:from-[#f57111] hover:after:to-[#f79605] astro-IKVAUYX3" href="https://github.com/flexdinesh/blogster" target="_blank">
+      Blogster</a>
+  </div>
+</footer>
+
+
+    
+  </body>
+</html>
