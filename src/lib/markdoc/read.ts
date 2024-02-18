@@ -5,6 +5,7 @@ import fs from "fs/promises";
 import { globby } from "globby";
 import Markdoc from "@markdoc/markdoc";
 import { config } from "./markdoc.config";
+import type { BlogData, BlogPostData } from "../../data/blog";
 
 // path is relative to where you run the `yarn build` command
 const contentDirectory = path.normalize("./git-dev-blog");
@@ -46,12 +47,28 @@ function validateFrontmatter<T extends z.ZodTypeAny>({
 export async function read<T extends z.ZodTypeAny>({
   filepath,
   schema,
+  meta,
 }: {
   filepath: string;
   schema: T;
+  meta: {
+    external: boolean;
+    title: string;
+    date: string;
+    description: string;
+  };
 }) {
   const rawString = await fs.readFile(filepath, "utf8");
-  const { content, data: frontmatter } = matter(rawString);
+  const rawWithMeta = `---
+external: ${meta.external}
+draft: false
+title: ${meta.title}
+description: ${meta.description}
+date: ${meta.date}
+---
+${rawString}`;
+
+  const { content, data: frontmatter } = matter(rawWithMeta);
   const transformedContent = await parseAndTransform({ content });
   const validatedFrontmatter = validateFrontmatter({
     frontmatter,
@@ -59,11 +76,17 @@ export async function read<T extends z.ZodTypeAny>({
     filepath,
   });
 
-  const filename = filepath.split("/").pop();
+  const splitedFilepath = filepath.split("/");
+  splitedFilepath.shift();
+  const filename = splitedFilepath.pop();
+
   if (typeof filename !== "string") {
     throw new Error("Check what went wrong");
   }
-  const fileNameWithoutExtension = filename.replace(/\.[^.]*$/, "");
+  const fileNameWithoutExtension = [
+    ...splitedFilepath,
+    filename.replace(/\.[^.]*$/, ""),
+  ].join("/");
 
   return {
     slug: fileNameWithoutExtension,
@@ -73,30 +96,47 @@ export async function read<T extends z.ZodTypeAny>({
 }
 
 export async function readOne<T extends z.ZodTypeAny>({
-  directory,
-  slug,
+  dir,
+  post,
   frontmatterSchema: schema,
 }: {
-  directory: string;
-  slug: string;
+  dir: string;
+  post: BlogPostData;
   frontmatterSchema: T;
 }) {
-  const filepath = path.join(contentDirectory, directory, `${slug}.md`);
+  const filepath = path.join(dir, post.src);
   return read({
     filepath,
     schema,
+    meta: {
+      external: post.external,
+      title: post.title,
+      description: post.description,
+      date: post.date,
+    },
   });
 }
 
 export async function readAll<T extends z.ZodTypeAny>({
-  directory,
+  blogData,
   frontmatterSchema: schema,
 }: {
-  directory: string;
+  blogData: BlogData;
   frontmatterSchema: T;
 }) {
-  const pathToDir = path.posix.join(contentDirectory, directory);
-  const paths = await globby(`${pathToDir}/*.md`);
+  const posts = blogData.posts.map((post) => {
+    return {
+      path: path.posix.join(blogData.dir, post.src),
+      meta: {
+        external: post.external,
+        title: post.title,
+        description: post.description,
+        date: post.date,
+      },
+    };
+  });
 
-  return Promise.all(paths.map((path) => read({ filepath: path, schema })));
+  return Promise.all(
+    posts.map((post) => read({ filepath: post.path, schema, meta: post.meta }))
+  );
 }

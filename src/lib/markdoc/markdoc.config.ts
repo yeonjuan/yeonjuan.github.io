@@ -114,14 +114,30 @@ export const config: Config = {
     // if you want to customise default tags, this is where you'd do it
     // after adding the code here, add an Astro component for this node
     // in Renderer.astro component
-    // paragraph: {
-    //   render: "paragraph",
-    //   transform(node, config) {
-    //     const attributes = node.transformAttributes(config);
-    //     const children = node.transformChildren(config);
-    //     return new Tag(this.render, { ...attributes }, children);
-    //   },
-    // },
+    paragraph: {
+      render: "paragraph",
+      transform(node, config) {
+        const attributes = node.transformAttributes(config);
+        const children = node.transformChildren(config);
+        return new Tag(this.render, { ...attributes }, children);
+      },
+    },
+    image: {
+      render: "image",
+      attributes: {
+        alt: { type: String, default: "" },
+        src: { type: String, default: "" },
+      },
+      transform(node, config) {
+        const attributes = node.transformAttributes(config);
+        if (attributes["src"] && attributes["src"].startsWith(".")) {
+          const filename = attributes["src"].split("/").pop();
+          attributes["src"] = "/images/blog/" + filename;
+        }
+        const children = node.transformChildren(config);
+        return new Tag(this.render, { ...attributes }, children);
+      },
+    },
     fence: {
       render: "CodeBlock",
       attributes: {

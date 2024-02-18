@@ -10,7 +10,8 @@
     "astro": "astro",
     "clean": "rm -rf dist",
     "fetch-git": "node scripts/fetch-from-git",
-    "deploy": "yarn build && gh-pages -d dist"
+    "copy-res": "node scripts/copy-blog-resources",
+    "deploy": "yarn build && gh-pages -d dist --dotfiles true"
   },
   "dependencies": {
     "@astrojs/prism": "^1.0.2",
@@ -39,6 +40,7 @@
     "axios": "^1.6.7",
     "dotenv": "^16.4.4",
     "gh-pages": "^6.1.1",
+    "glob": "^10.3.10",
     "octokit": "^3.1.2",
     "prettier-plugin-astro": "^0.7.2",
     "typescript": "^4.9.4"

@@ -2,10 +2,11 @@ import rss from "@astrojs/rss";
 import { blog } from "../lib/markdoc/frontmatter.schema";
 import { readAll } from "../lib/markdoc/read";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config";
+import { BLOG_DATA } from "src/data/blog";
 
 export const get = async () => {
   const posts = await readAll({
-    directory: "blog",
+    blogData: BLOG_DATA,
     frontmatterSchema: blog,
   });
 
