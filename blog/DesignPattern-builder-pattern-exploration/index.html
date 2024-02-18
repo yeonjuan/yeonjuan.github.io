@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="theme-sleek astro-RDWXBD3Z" lang="en">
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Blogster">
+    <meta name="theme-color" content="#ffffff">
+
+<!-- 
+  This is an example. 
+  Use https://realfavicongenerator.net to generate the icons and manifest. 
+-->
+<link href="/favicon.ico" rel="shortcut icon">
+
+    <!-- Primary Meta Tags --><title>빌더 패턴 탐구 (번역)</title>
+<meta name="title" content="빌더 패턴 탐구 (번역)">
+<meta name="description" content="description">
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="빌더 패턴 탐구 (번역)">
+<meta property="og:description" content="description">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://localhost:3000/blog/DesignPattern-builder-pattern-exploration">
+<meta property="article:author" content="연주안">
+<meta property="article:published_time" content="2020-05-23T00:00:00.000Z">
+
+
+
+
+
+<!-- Twitter -->
+<meta property="twitter:title" content="빌더 패턴 탐구 (번역)">
+<meta property="twitter:description" content="description">
+
+
+<meta property="twitter:card" content="summary_large_image">
+
+
+<!-- {twitter.url && <meta property="twitter:url" content={twitter.url} />} -->
+
+    <!-- 
+    We don't want to use <link /> to load fonts from Google CDN 
+    but if you want to switch font this is the easiest way 
+    to check how your page will look with the new font.
+--><!-- 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=block"
+        rel="stylesheet"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&display=swap"
+        rel="stylesheet"
+    />
+--><link rel="preload" href="/fonts/open-sans-v34-latin-regular.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-700.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-800.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><link rel="preload" href="/fonts/open-sans-v34-latin-italic.woff2" as="font" type="font/woff2" crossorigin="crossorigin"><style>
+    /* open-sans-regular - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-regular.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-700 - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-700.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-800 - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 800;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-800.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-800.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* open-sans-italic - latin */
+    @font-face {
+      font-family: "Open Sans";
+      font-style: italic;
+      font-weight: 400;
+      font-display: fallback;
+      src: local(""),
+        url("/fonts/open-sans-v34-latin-italic.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+          url("/fonts/open-sans-v34-latin-italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+  </style>
+
+    <script>
+  // figure out user's preferred theme and set it as html class for tailwind before paint
+  (function () {
+    if (typeof window !== "undefined") {
+      const isSystemColorSchemeDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const storageTheme = sessionStorage.getItem("theme");
+      if (!storageTheme && isSystemColorSchemeDark) {
+        document.documentElement.classList.add("dark");
+        document.head.children.namedItem("theme-color").content = "#0e141b";
+      } else if (storageTheme === "dark") {
+        document.documentElement.classList.add("dark");
+        document.head.children.namedItem("theme-color").content = "#0e141b";
+      } else {
+        // we already server render light theme
+        document.head.children.namedItem("theme-color").content = "#ffffff";
+      }
+    }
+  })();
+</script>
+
+    <link href="/fontawesome/css/fontawesome.bareminimum.css" rel="stylesheet"><link href="/fontawesome/css/brands.bareminimum.css" rel="stylesheet"><link href="/fontawesome/css/solid.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/_slug_.eb89f7da.css" />
+<link rel="stylesheet" href="/assets/_slug_.43380762.css" /><script type="module" src="/hoisted.fee86805.js"></script></head>
+
+  <body class="min-h-screen max-w-3xl mx-auto px-6 sm:px-8 astro-RDWXBD3Z">
+    <header class="astro-ZCCACUUV">
+  <a class="unset absolute z-10 left-[50%] -top-[100rem] translate-x-[-50%] bg-white text-black px-8 py-2 focus:top-[initial] astro-ZCCACUUV" href="#main">
+    Skip to content
+  </a>
+  <nav class="astro-ZCCACUUV">
+    <section class="text-text-bold astro-ZCCACUUV">
+      <ul class="unset flex gap-4 [&>li]:p-0 astro-ZCCACUUV">
+        <li class="astro-ZCCACUUV"><!-- DO NOT FORMAT. IT ADDS AN EXTRA SPACE ON RENDERED CONTENT. --><a href="/" class="astro-ZCCACUUV unset animated-link">Home</a></li>
+        <li class="astro-ZCCACUUV"><!-- DO NOT FORMAT. IT ADDS AN EXTRA SPACE ON RENDERED CONTENT. --><a href="/blog" class="astro-ZCCACUUV show unset animated-link">Blog</a></li>
+      </ul>
+    </section>
+  </nav>
+  <div class="max-[375px]:hidden justify-self-end py-2 flex items-center content-center text-text-bold astro-ZCCACUUV">
+    <a class="unset text-xl ml-4 hover:text-text-link astro-ZCCACUUV" href="https://github.com/yeonjuan" target="_blank">
+      <i class="fa-brands fa-github astro-ZCCACUUV" aria-hidden="true" title="Blogster on GitHub"></i>
+      <span class="fa-sr-only astro-ZCCACUUV">YeonJuAn GitHub</span>
+    </a>
+  </div>
+  <mode-toggle class="flex astro-2DKTDEXU">
+  <button class="justify-self-end bg-neutral-200 dark:bg-neutral-700 ml-4 inline-flex h-6 w-11 items-center rounded-full astro-2DKTDEXU" id="mode-toggle" role="switch" type="button" tabindex="0" aria-checked="false" data-headlessui-state=""><span class="sr-only astro-2DKTDEXU">Toggle dark mode</span><span id="mode-circle" class="light inline-block h-4 w-4 rounded-full bg-gradient-to-tr invisible astro-2DKTDEXU"><span class="absolute top-0 right-0 w-[10px] h-[10px] rounded-full bg-gray-700 scale-[0] astro-2DKTDEXU"></span>
+  </span>
+</button>
+</mode-toggle>
+
+
+
+
+</header>
+
+    <main id="main" class="astro-RDWXBD3Z">
+      <section class="blog-post prose max-w-none prose-sleek astro-RDWXBD3Z">
+        <time class="block mb-[2em] text-text-muted astro-RDWXBD3Z">May 23, 2020</time>
+        <article><h1 id="javascript-(builder)" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="JavaScript 빌더(Builder) 탐구" href="#javascript-(builder)" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>JavaScript 빌더(Builder) 탐구</span></h1><blockquote><paragraph>이 글은 <a href="http://ryanogles.by/an-exploration-of-javascript-builders/">An Exploration of JavaScript Builders</a>를 원작자(Ryan Oglesby)의 허락을 받아 번역하였습니다.</paragraph></blockquote><paragraph><a href="http://ryanogles.by/how-your-mother-can-help-you-build-cleaner-unit-tests/part-i/">이전에 블로그에서도 포스팅</a>했듯이, 빌더는 저에게 흥미로운 주제입니다. 이번엔, 빌더를 JavaScript 관점으로 살펴보았습니다. 이 글에서는 현대적인 언어 특징을 활용하여 JavaScript, 특히 ES6에서 빌더를 모델링 하는 세 가지 기법을 살펴보겠습니다.</paragraph><blockquote><paragraph>글에서 모든 예제는 오직 테스트 목적으로 작성되었습니다. 실제 코드에 빌더 패턴을 사용할 수 있지만, 아래 표시된 빌더에는 기본값이 미리 포함되어 있어 프로덕션 코드에는 적합하지 않습니다.*</paragraph></blockquote><h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="고전적인 방식" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>고전적인 방식</span></h2><paragraph>먼저 객체의 상태를 빌드 하기 위해 &quot;withers&quot;를 사용하는 간단하고 이해하기 쉬운 빌더 부터 시작하겠습니다. 각 &quot;wither&quot;는 체이닝을 하기 위해 <code>this</code>를 반환합니다. <code>build</code> 메서드는 결국 일반 JavaScript 객체를 반환합니다.</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">ProductBuilder</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'A Product'</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>price <span class="token operator">=</span> <span class="token number">9.99</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>category <span class="token operator">=</span> <span class="token string">'other'</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">withName</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+    <span class="token keyword">return</span> <span class="token keyword">this</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">withPrice</span><span class="token punctuation">(</span><span class="token parameter">price</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>price <span class="token operator">=</span> price
+    <span class="token keyword">return</span> <span class="token keyword">this</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">withCategory</span><span class="token punctuation">(</span><span class="token parameter">category</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>category <span class="token operator">=</span> category
+    <span class="token keyword">return</span> <span class="token keyword">this</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+      <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>price<span class="token punctuation">,</span>
+      <span class="token literal-property property">category</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>category<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+  <span class="token keyword">new</span> <span class="token class-name">ProductBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">withName</span><span class="token punctuation">(</span><span class="token string">'Harry Potter'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">withCategory</span><span class="token punctuation">(</span><span class="token string">'book'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token comment">// =></span>
+<span class="token comment">//    {</span>
+<span class="token comment">//      name: 'Harry Potter',</span>
+<span class="token comment">//      price: 9.99,</span>
+<span class="token comment">//      category: 'book'</span>
+<span class="token comment">//    }</span>
+</code></pre>
+
+<paragraph>간단하고 익숙하지만 장황합니다. 빌더는 세 개의 필드만 필요하지만 벌써 꽤 커졌고 많은 보일러 플레이트가 필요합니다. 이 크기는 필드의 수에 따라 선형적으로 증가합니다.</paragraph><paragraph>이 기법도 괜찮지만, 강력한 JavaScript의 기능을 사용하지 않고, Java-스러운 접근법을 취하고 있습니다. 이 점을 좀 더 살펴봅시다.</paragraph><h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="메타 프로그래밍을 통한 빌더 생성" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>메타 프로그래밍을 통한 빌더 생성</span></h2><paragraph>앞의 예시중 몇 가지 단점, 즉 반복적인 &quot;wither&quot;에 대해 이야기해 봅시다. 각각의 &quot;withers&quot; 메서드를 수동으로 입력하기보다는 자동으로 생성해 봅시다.</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">ProductBuilder</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'A metaprogrammed product'</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>price <span class="token operator">=</span> <span class="token number">9.99</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>category <span class="token operator">=</span> <span class="token string">'other'</span>
+
+    <span class="token comment">// 각 프로퍼티에 따라 "wither" 메서드 생성</span>
+    Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> witherName <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">with</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+      <span class="token keyword">this</span><span class="token punctuation">[</span>witherName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token parameter">value</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value
+        <span class="token keyword">return</span> <span class="token keyword">this</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 빌더에서 함수가 아닌 프로퍼티의 배열을 가져옴</span>
+    <span class="token keyword">const</span> keysNoWithers <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=></span> <span class="token keyword">typeof</span> <span class="token keyword">this</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// 키 배열을 객체로 변환</span>
+    <span class="token keyword">return</span> keysNoWithers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">returnValue<span class="token punctuation">,</span> key</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>returnValue<span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+  <span class="token keyword">new</span> <span class="token class-name">ProductBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">withName</span><span class="token punctuation">(</span><span class="token string">'Harry Potter'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">withCategory</span><span class="token punctuation">(</span><span class="token string">'book'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token comment">// =></span>
+<span class="token comment">//    {</span>
+<span class="token comment">//      name: 'Harry Potter',</span>
+<span class="token comment">//      price: 9.99,</span>
+<span class="token comment">//      category: 'book'</span>
+<span class="token comment">//    }</span>
+</code></pre>
+
+<paragraph>이 패턴은 첫 번째 예제와 같은 결과를 만듭니다. 생성자에서는 객체의 프로퍼티를 통해, 자동으로 &quot;wither&quot; 메서드를 생성합니다. 그리고, <code>build</code> 메서드에서는 결과 객체를 만들기 위해 객체의 프로퍼티를 한 번더 사용합니다. 여기서 JavaScript의 멋진 기능인 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">Object.keys</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">reduce</a>와 <a href="https://github.com/tc39/proposal-object-rest-spread">object rest spread</a>를 사용하고 있습니다.</paragraph><paragraph>처음에는 지나치게 복잡해 보일 수 있습니다.(한 개의 빌더는 복잡합니다), 진짜 강력함은 빌더가 많을 때 발휘됩니다. 일반화된 부분을 공통의 슈퍼클래스로 쉽게 추출할 수 있어, 새로운 빌더를 엄청 쉽게 만들 수 있습니다.</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">BaseBuilder</span> <span class="token punctuation">{</span>
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> witherName <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">with</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">[</span>witherName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> keysNoWithers <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+      <span class="token keyword">typeof</span> <span class="token keyword">this</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">'function'</span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> keysNoWithers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">returnValue<span class="token punctuation">,</span> key</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>returnValue<span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ProductBuilder</span> <span class="token keyword">extends</span> <span class="token class-name">BaseBuilder</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'A metaprogrammed product'</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>price <span class="token operator">=</span> <span class="token number">9.99</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>category <span class="token operator">=</span> <span class="token string">'other'</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SandwichBuilder</span> <span class="token keyword">extends</span> <span class="token class-name">BaseBuilder</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>meat <span class="token operator">=</span> <span class="token string">'ham'</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>cheese <span class="token operator">=</span> <span class="token string">'swiss'</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+  <span class="token keyword">new</span> <span class="token class-name">ProductBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">withName</span><span class="token punctuation">(</span><span class="token string">'Harry Potter'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">withCategory</span><span class="token punctuation">(</span><span class="token string">'book'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+  <span class="token keyword">new</span> <span class="token class-name">SandwichBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">withMeat</span><span class="token punctuation">(</span><span class="token string">'Roast Beef'</span>
+    <span class="token punctuation">.</span><span class="token function">withCheese</span><span class="token punctuation">(</span><span class="token string">'Havarti'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// =></span>
+<span class="token comment">//    {</span>
+<span class="token comment">//      name: 'Harry Potter',</span>
+<span class="token comment">//      price: 9.99,</span>
+<span class="token comment">//      category: 'book'</span>
+<span class="token comment">//    }</span>
+<span class="token comment">// =></span>
+<span class="token comment">//    {</span>
+<span class="token comment">//      name: 'Roast Beef',</span>
+<span class="token comment">//      cheese: 'Havarti'</span>
+<span class="token comment">//    }</span>
+</code></pre>
+
+<paragraph>ES6 상속하에 구축된 이 일반적인 구조를 사용함으로써, 공통 인터페이스의 예측 가능성과 새로운 빌더 생성의 단순함을 얻게 됩니다. 필요에 따라 사용자 정의 기능을 추가하기 위해 쉽게 추가 메서드를 삽입할 수 있기 때문에, 빌더들은 여전히 확장 가능성을 열어두고 있습니다.</paragraph><paragraph>하지만 여전히 장황한 &quot;wither&quot; 구문을 따르고 있습니다. 이 접근법은 본질적으로 객체 지향적입니다. OOP에서는 문제가 없지만 JavaScript는 유연성이 뛰어나고 여러 패러다임을 채택합니다. 좀 더 함수형 프로그래밍 기법을 활용해 빌더에 접근하면 어떨까요?</paragraph><h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="단순 함수 사용" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>단순 함수 사용</span></h2><paragraph>클래스를 제거해봅시다. &quot;withers&quot;를 제거해봅시다. 대신 빌더를 함수로 모델링 해봅시다.</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">buildProduct</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">overrides <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> defaults <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'A functional product'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">9.99</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">category</span><span class="token operator">:</span> <span class="token string">'other'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token operator">...</span>defaults<span class="token punctuation">,</span> <span class="token operator">...</span>overrides <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+  <span class="token function">buildProduct</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Harry Potter'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">category</span><span class="token operator">:</span> <span class="token string">'book'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token comment">// =></span>
+<span class="token comment">//    {</span>
+<span class="token comment">//      name: 'Harry Potter',</span>
+<span class="token comment">//      price: 9.99,</span>
+<span class="token comment">//      category: 'book'</span>
+<span class="token comment">//    }</span>
+</code></pre>
+
+<paragraph>여기서 우리는 두 객체를 합치기 위해 object rest spread 을 사용합니다.</paragraph><paragraph>우아하지만 가장 명백한 단점은, <code>overrides</code> 객체의 내용에 대한 통제가 없다는 점이며, 이로인해 실수를 발생시킬 수 있습니다. 위의 예에서 <code>buildProduct({nme: 'Harry Potter'})</code>를 한다면 기본 name 을 가지고 추가 프로퍼티 &quot;nme&quot; 를 가진 객체를 만들어 낼 것입니다. 이는 이상적이지 않습니다. 그걸 고쳐보겠습니다.</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> difference <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lodash'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">buildProduct</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">overrides <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> defaults <span class="token operator">=</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'A functional product'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">9.99</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">category</span><span class="token operator">:</span> <span class="token string">'other'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// overrides에 추가 키를 도입하지 못하도록 막음 </span>
+  <span class="token keyword">const</span> extraOverrides <span class="token operator">=</span> <span class="token function">difference</span><span class="token punctuation">(</span>
+    Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>overrides<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>defaults<span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>extraOverrides<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Invalid builder! </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>extraOverrides<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token operator">...</span>defaults<span class="token punctuation">,</span> <span class="token operator">...</span>overrides<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+  <span class="token function">buildProduct</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Harry Potter'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">category</span><span class="token operator">:</span> <span class="token string">'book'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">keyThatDoesNotExist</span><span class="token operator">:</span> <span class="token string">'oops'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// => Error: Invalid builder! keyThatDoesNotExist</span>
+</code></pre>
+
+<paragraph><a href="https://lodash.com/docs/4.17.15#difference">lodash의 배열 비교 유틸리티</a>를 사용하여, 이 문제를 예방할 수 있습니다. 그리고 다른 재사용 가능한 코드 조각들과 마찬가지로. 이를 많은 빌더들이 사용하는 함수로 추출할 수 있습니다.</paragraph><paragraph>위의 모든 예에서 만들어지는 개체는 단순합니다. 이 함수형 기법은 여러 중첩된 객체를 포함하는 더 크고 복잡한 객체를 제대로 관리하지 못합니다. 깊은 합병(deep merging)을 할 수 있지만, 이는 추론하기 힘들기 때문에 피하겠습니다. 대신 여러 빌더를 함께 합성하는 것을 추천합니다.</paragraph><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> difference <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lodash'</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">preventExtraOverrides</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">defaults<span class="token punctuation">,</span> overrides</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> extraOverrides <span class="token operator">=</span> <span class="token function">difference</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>overrides<span class="token punctuation">)</span><span class="token punctuation">,</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>defaults<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>extraOverrides<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Invalid builder! </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>extraOverrides<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">buildProductName</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">overrides <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> defaults <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'A product'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">description</span><span class="token operator">:</span> <span class="token string">'A product description'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">preventExtraOverrides</span><span class="token punctuation">(</span>defaults<span class="token punctuation">,</span> overrides<span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token operator">...</span>defaults<span class="token punctuation">,</span> <span class="token operator">...</span>overrides <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">buildProductPrice</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">overrides <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> defaults <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">50</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">taxRate</span><span class="token operator">:</span> <span class="token number">0.08</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">preventExtraOverrides</span><span class="token punctuation">(</span>defaults<span class="token punctuation">,</span> overrides<span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token operator">...</span>defaults<span class="token punctuation">,</span> <span class="token operator">...</span>overrides <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">buildProduct</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">overrides <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> defaults <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token function">buildProductName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token function">buildProductPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">category</span><span class="token operator">:</span> <span class="token string">'other'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">preventExtraOverrides</span><span class="token punctuation">(</span>defaults<span class="token punctuation">,</span> overrides<span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token operator">...</span>defaults<span class="token punctuation">,</span> <span class="token operator">...</span>overrides <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+  <span class="token function">buildProduct</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token function">buildProductName</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Harry Potter'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token function">buildProductPrice</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">9.99</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token comment">// =></span>
+<span class="token comment">//  {</span>
+<span class="token comment">//    name: {</span>
+<span class="token comment">//      name: 'Harry Potter',</span>
+<span class="token comment">//      description: 'A product description'</span>
+<span class="token comment">//    },</span>
+<span class="token comment">//    price: {</span>
+<span class="token comment">//      price: 9.99,</span>
+<span class="token comment">//      taxRate: 0.08</span>
+<span class="token comment">//    },</span>
+<span class="token comment">//    category: 'other'</span>
+<span class="token comment">//  }</span>
+</code></pre>
+
+<paragraph>빌더를 합성함으로써, 객체를 작고 독립적으로 분해했기 때문에 쉽게 추론할 수 있습니다. 각 빌더는 비슷한 패턴을 따르지만, 스스로 포함되기 때문에 특정 상황에 맞춤화할 수 있습니다.</paragraph><h2 id="" class="group flex -ml-[1rem]"><span class="not-prose w-[1rem] -mt-[0.125rem]">
+        <a aria-label="link to this heading" aria-describedby="그래서 어떤 방법이 최고일까요?" href="#" class="unset align-middle text-[14px] text-text-link opacity-0 group-hover:opacity-100 group-focus:opacity-100 focus:opacity-100 group-active:opacity-100 active:opacity-100">
+            <i class="fa-solid fa-hashtag"></i>
+        </a>
+    </span><span>그래서 어떤 방법이 최고일까요?</span></h2><paragraph>상황에 따라 다릅니다. 듣고 싶었던 말은 아니겠죠?  그렇게 쉽지 않습니다. 당신이 겪는 독특한 상황에는 어떤 패턴이 다른 것들 보다 더 적절할 수 있습니다. 당신의 팀이 아직 JavaScript 의미론에 익숙하지 않은 전직 Java 개발자로 가득한 팀인가요? 아마 고전적인 접근법으로 시작해서 메타 프로그래밍 기법을 향해 나아가는 것이 결국 적절할 것입니다. 당신의 팀은 함수형 패러다임에 열성적인가요? 함수형 접근법을 사용하세요.</paragraph><paragraph>전반적으로, JavaScript는 다중 패러다임 언어로, 많은 요구에 맞게 변화할 수 있다는 것을 기억세요. Enjoy!</paragraph></article>
+      </section>
+    </main>
+    <footer class="text-sm leading-[1.75] mt-4 astro-IKVAUYX3">
+  <div class="astro-IKVAUYX3">
+    This blog is built with
+    <a class="unset gradient-link tracking-wider font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#f57111] to-[#f79605] hover:after:bg-gradient-to-r hover:after:from-[#f57111] hover:after:to-[#f79605] astro-IKVAUYX3" href="https://github.com/flexdinesh/blogster" target="_blank">
+      Blogster</a>
+  </div>
+</footer>
+
+
+    
+  </body>
+</html>
