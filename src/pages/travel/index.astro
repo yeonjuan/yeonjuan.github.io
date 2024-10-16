@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BlogPost.astro';
+
+
+let travelPosts = await Astro.glob('../../content/travel/**/*.mdx');
+
+---
+<BaseLayout>
+    {travelPosts.map((post, index) => {
+        const [filename, dir] = post.file.split('/').reverse();
+        const href = `/travel/${dir}/${filename.slice(0, filename.indexOf('.'))}`;
+        return (
+          <div>
+            { index !== 0 && <hr /> }
+            <div class="post-item">
+              <h2>
+                <a href={href}>{post.frontmatter.title}</a>
+              </h2>
+              <div class="post-item-footer">
+                <span class="post-item-date">— {post.frontmatter.publishDate}</span>
+              </div>
+            </div>
+          </div>
+        )
+      })}
+</BaseLayout>
