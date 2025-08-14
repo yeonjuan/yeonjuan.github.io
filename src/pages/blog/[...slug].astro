@@ -5,11 +5,11 @@ import Renderer from "../../components/Renderer.astro";
 import BlogPostMeta from "../../components/BlogPostMeta.astro";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import { SITE_URL } from "../../config";
-import { BLOG_DATA } from "../../data/blog";
+import { DEV_POSTS } from "../../data/blog";
 
 export async function getStaticPaths() {
   const posts = await readAll({
-    blogData: BLOG_DATA,
+    blogData: DEV_POSTS,
     frontmatterSchema: blog,
   });
 
@@ -29,8 +29,8 @@ if (typeof slug !== "string") {
 }
 
 const { content, frontmatter } = await readOne({
-  dir: BLOG_DATA.dir,
-  post: BLOG_DATA.posts.find((post) => post.src.startsWith(slug))!,
+  dir: DEV_POSTS.dir,
+  post: DEV_POSTS.posts.find((post) => post.src.startsWith(slug))!,
   frontmatterSchema: blog,
 });
 

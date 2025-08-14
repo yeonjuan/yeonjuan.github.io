@@ -11,7 +11,7 @@ export type BlogData = {
   posts: BlogPostData[];
 };
 
-export const BLOG_DATA = {
+export const DEV_POSTS = {
   dir: "git-dev-blog",
   posts: [
     {

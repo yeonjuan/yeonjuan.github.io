@@ -1,0 +1,43 @@
+---
+import { DEV_POSTS } from "../data/blog";
+import {pickLatestPost} from 'src/lib/utils';
+
+const recentDevPosts = pickLatestPost(DEV_POSTS.posts, 4);
+const props = {
+  blogs: [
+    {
+      category: "Development",
+      posts: recentDevPosts
+    }
+  ]
+}
+---
+<div>
+{
+  props.blogs.map(blog => {
+    return <div class="mb-8">
+      <h2 class="border-b-[3px] inline-block border-black font-semibold mt-6">{blog.category}</h2>
+      <ul>
+        <li class="flex space-x-4 mt-4 mb-4">
+          <div class="w-[33%]">
+            <img class="w-full h-full">
+          </div>
+          <div class="max-w-[200px] min-h-[107px]">
+            <h3 class="font-semibold">타이틀</h3>
+            <p class="text-xs">설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+          </div>
+        </li>
+        <li class="flex space-x-4">
+          <div class="w-[33%]">
+            <img class="w-full h-full">
+          </div>
+          <div class="max-w-[200px] min-h-[107px]">
+            <h3 class="font-semibold">타이틀</h3>
+            <p class="text-xs">설명 설명 설명 설명 설명 설명 설명 설명 설명 설명</p>
+          </div>
+        </li>
+      </ul>
+      </div>;
+  })
+}
+</div>
